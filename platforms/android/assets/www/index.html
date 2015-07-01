@@ -12,7 +12,7 @@
         <link rel="import" href="components/bower_components/core-menu/core-menu.html">
         <link rel="import" href="components/bower_components/core-item/core-item.html">
         <link rel="import" href="components/bower_components/paper-toast/paper-toast.html">
-        <link rel="import" href="components/bower_components/paper-input/paper-input.html">                     <link rel="import" href="components/bower_components/paper-icon-button/paper-icon-button.html">
+        <link rel="import" href="components/bower_components/paper-input/paper-input.html">                         <link rel="import" href="components/bower_components/paper-icon-button/paper-icon-button.html">
 
 
         <link rel="import" href="components/bower_components/paper-fab/paper-fab.html"> 
@@ -23,85 +23,48 @@
         <script type="text/javascript">
             app.initialize();
         </script>
-        <style>
-            html, body {
-                height: 100%;
-                margin: 0;
-            }
-            body {
+        <style>   
+            
+            html, body{
                 font-family: sans-serif;
+                -webkit-tap-highlight-color:rgba(0,0,0,0);
             }
-            core-scaffold {
+              :host {
                 position: absolute;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                left: 0;
-            }
-            #core_toolbar {
+                width: 100%;
+                height: 100%;
+                box-sizing: border-box;
+              }
+              #core_header_panel {
+                width: 100%;
+                height: 100%;
+                left: 0px;
+                top: 0px;
+                position: absolute;
+              }
+              #core_toolbar {
                 color: rgb(255, 255, 255);
                 background-color: rgb(79, 125, 201);
-            }
-            #core_card {
-                width: 96%;
-                height: 60px;
-                border-top-left-radius: 2px;
-                border-top-right-radius: 2px;
-                border-bottom-right-radius: 2px;
-                border-bottom-left-radius: 2px;
-                box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
-                margin: 2%;
-                background-color: rgb(255, 255, 255);
-                text-align: left;
-            }
-            paper-fab {
-                position: absolute;
-                right: 20px; 
-                bottom: 20px;
-            }
+              }
+              #section {
+                height: 1000px;
+                background: #FAFAFA);
+              }
             
-            #title{
-                float: left;
+            #searchBtn {
+                float:right;
+                color:white;
             }
-            #searchValue{  
-                font-size:18px;
-                position: absolute;
-                top:-20px;
-                right:1%;
-                width:30%;
-                height: 60px
-            }
+            </style>
+        <body>
             
-             #searchBtn{
-                 color:white;
-                position:absolute;                 
-                left:90%;
-                top:20%;
-            }
-        </style>
-    </head>
-    <body unresolved>
-        <core-scaffold>
-            <core-header-panel navigation flex mode="seamed">
-                <core-toolbar id="core_toolbar">Navigation</core-toolbar>
-                <core-menu theme="core-light-theme">
-                    <core-item icon="settings" label="Drug Info"></core-item>
-                    <core-item icon="settings" label="Adverse Events"></core-item>
-                </core-menu>
+            <core-header-panel mode="standard" id="core_header_panel">
+              <core-toolbar id="core_toolbar">
+                <div id="div" flex>myResource</div>
+                  <a href= "searchPage.html" id="searchBtn"><paper-icon-button id="searchBtn" icon="search"></paper-icon-button></a>              
+              </core-toolbar>
+              <section id="section"></section>
             </core-header-panel>
-            <div tool>
-                <div tool id="title" flex>myResource</div>
-<!--                <input placeholder="Search Medication" id="searchValue">-->
-<!--                <paper-input label="Search Medication" id="searchValue"></paper-input>-->               
-                
-                <a href= "searchPage.html" id="searchBtn"><paper-icon-button id="searchBtn" icon="search"></paper-icon-button></a>              
-                </div>
-            
-            <core-card id="core_card" vertical layout start>
-                <div style="padding: 20px;">Motrin</div>
-            </core-card>
-            <paper-toast id="toast1" text="myResource"></paper-toast>
-        </core-scaffold>
-        <paper-fab icon="add" onclick="document.querySelector('#toast1').show()"></paper-fab>
-    </body>
+  
+        </body>
 </html>
