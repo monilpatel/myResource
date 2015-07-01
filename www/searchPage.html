@@ -38,19 +38,6 @@
         #backBtn {
             color:white;
         }
-          
-       /* #core_card {
-                width: 96%;
-                height: 50px;
-                border-top-left-radius: 2%;
-                border-top-right-radius: 20%;
-                border-bottom-right-radius: 20%;
-                border-bottom-left-radius: 2%;
-                box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
-                margin: 100px;
-                background-color: rgb(255, 255, 255);
-                text-align: center;
-        }*/
          #content {
             
             margin-top: 30%;
@@ -125,7 +112,6 @@
         <core-toolbar raised id="core_toolbar"> 
             <a href= "index.html" id="backBtn"><paper-icon-button icon="arrow-back" id="backBtn"></paper-icon-button></a>            
             <div >
-<!--                <paper-input label="Search Medication" id="searchValue"></paper-input>-->
                 <paper-input class="custom" label="Search Medication" id="searchValue"></paper-input>
 
             </div>
@@ -136,7 +122,7 @@
         
         <div id="content">         
    
-<!--                <h2>Brand Name</h2>-->
+<!--  Info Labels without Collapse              <h2>Brand Name</h2>-->
        <!-- <core-card id="core_card" vertical layout start>
             <div style="padding: 20px;" id="brand_name"><b>Brand Name</b></div>
         </core-card>
@@ -152,7 +138,7 @@
         <core-card id="core_card" vertical layout start>
             <div style="padding: 20px;" id="side_effects"><b>Side Effects:</b></div>
         </core-card>-->
-            
+    
      <div class="heading" onclick="document.querySelector('#collapse1').toggle();">Brand Name</div>
      <core-collapse id="collapse1">
             <div class="content" id="brand_name">
@@ -184,30 +170,5 @@
         
         <paper-fab icon="add" onclick="document.querySelector('#toast1').show()"></paper-fab>
         
-        
-    <!--<script  type = "text/javascript" >           
-            
-            window.onload = addListeners;
-            
-            function addListeners(){
-                
-                if(window.addEventListener){
-                    document.getElementById('searchBtn').addEventListener("click",searchFunction,false);                     
-                }else if (window.attachEvent){                    
-                }          
-                
-                function searchFunction() {                   
-                     var myVariable = document.getElementById('searchValue').value;   
-                    
-                     if(myVariable.length != 0){
-                        window.alert(myVariable);
-                     }   
-                }    
-
-            }   
-        
-        
-                    
-        </script> -->
     </body>
 </html>
