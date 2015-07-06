@@ -14,7 +14,7 @@ $(document).ready(function() {
         
         /* Grabbingdata from the JSON on the adverse events on te drug */
 		$.getJSON("https://api.fda.gov/drug/event.json?search=brand_name:"+toAdd, function(data){
-			$("#side_effects").append("<p>"+data.results[0].patient.reaction[0].reactionmeddrapt+"</p>");
+			$("#side_effects").append(data.results[0].patient.reaction[0].reactionmeddrapt);
        
 		}); 
     }
