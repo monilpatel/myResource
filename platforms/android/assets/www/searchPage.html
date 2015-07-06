@@ -7,8 +7,7 @@
 <link rel="import" href="components/bower_components/core-input/core-input.html">
 <link rel="import" href="components/bower_components/paper-input/paper-input.html">
 <link rel="import" href="components/bower_components/core-collapse/core-collapse.html">
-
-
+        
 <link rel="import" href="components/bower_components/paper-icon-button/paper-icon-button.html">
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="searchLink.js"></script>
@@ -81,7 +80,7 @@
             margin-top: 20px;
         }
         paper-fab {
-                position: absolute;
+                position: fixed;
                 right: 20px; 
                 bottom: 20px;
             }
@@ -102,11 +101,19 @@
         #backBtn{
             color:white;
         }
+        
+        paper-toast{
+          bottom: 0;
+          left: 0;
+          width: 100%;
+        }
     </style>
     </head>
     <body>
-        
+               
+
         <core-header-panel mode="standard" id="core_header_panel">
+            
             <core-toolbar id="core_toolbar">
                    <a href= "index.html" ><paper-icon-button icon="arrow-back" id="backBtn"></paper-icon-button></a>  
             <div >
@@ -146,7 +153,10 @@
 
             <paper-fab icon="favorite" ></paper-fab>
                         </div>
+        
                 </section>
-            </core-header-panel>        
+        </core-header-panel> 
+        <paper-toast id="toast1" text="myResource"></paper-toast>
+                    
     </body>
 </html>

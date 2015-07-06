@@ -10,6 +10,7 @@ $(document).ready(function() {
 			$("#generic_name").text(data.results[0].openfda.generic_name);
             $("#purpose").text(data.results[0].purpose);
             $(".heading").show();
+            
 		});
         
         /* Grabbingdata from the JSON on the adverse events on te drug */

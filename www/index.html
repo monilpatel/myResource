@@ -12,7 +12,7 @@
         <link rel="import" href="components/bower_components/core-menu/core-menu.html">
         <link rel="import" href="components/bower_components/core-item/core-item.html">
         <link rel="import" href="components/bower_components/paper-toast/paper-toast.html">
-        <link rel="import" href="components/bower_components/paper-input/paper-input.html">                         <link rel="import" href="components/bower_components/paper-icon-button/paper-icon-button.html">
+        <link rel="import" href="components/bower_components/paper-input/paper-input.html">                         <link rel="import" href="components/bower_components/paper-icon-button/paper-icon-button.html"> 
 
 
         <link rel="import" href="components/bower_components/paper-fab/paper-fab.html"> 
@@ -55,6 +55,25 @@
                 float:right;
                 color:white;
             }
+            
+            #core_card {
+                width: 85%;
+                height: 60px;
+                border-top-left-radius: 2px;
+                border-top-right-radius: 2px;
+                border-bottom-right-radius: 2px;
+                border-bottom-left-radius: 2px;
+                box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+                margin: 2%;
+                background-color: rgb(255, 255, 255);
+                text-align: left;
+            }
+            
+            #quickBtn1{
+                margin:2%;
+                margin-right: 100px;
+                color:black;
+            }
             </style>
         <body>
             
@@ -63,7 +82,15 @@
                 <div id="div" flex>myResource</div>
                   <a href= "searchPage.html" id="searchBtn"><paper-icon-button id="searchBtn" icon="search"></paper-icon-button></a>              
               </core-toolbar>
-              <section id="section"></section>
+              <section id="section">
+                   <core-card id="core_card" vertical layout start>                       
+                        <div style="padding: 20px;">Motrin</div>
+<!--                       <paper-icon-button id="quickBtn1" icon="search"></paper-icon-button>-->
+                    </core-card>
+
+                
+                
+            </section>
             </core-header-panel>
   
         </body>
