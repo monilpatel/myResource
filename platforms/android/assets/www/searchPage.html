@@ -29,7 +29,8 @@
 <link rel="import" href="components/bower_components/paper-icon-button/paper-icon-button.html">
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="searchLink.js"></script>
-<link rel="import" href="components/bower_components/paper-fab/paper-fab.html">              
+<link rel="import" href="components/bower_components/paper-fab/paper-fab.html"> 
+
 
     <style>    
         
@@ -139,14 +140,16 @@
             <paper-icon-button id="searchBtn" icon="search"></paper-icon-button>
            
             </core-toolbar>
+            
                 <section id="section">
                     <div id="main">
                 <div class="heading" onclick="document.querySelector('#collapse1').toggle();">Brand Name</div>
          <core-collapse id="collapse1">
                 <div class="content" id="brand_name">
                   <div></div>
-                </div>
-         </core-collapse>
+             </div>
+                        </core-collapse>
+                 
 
          <div class="heading" onclick="document.querySelector('#collapse2').toggle();">Generic Name</div>
          <core-collapse id="collapse2">
@@ -169,12 +172,14 @@
                 </div>
          </core-collapse>
 
+
             <paper-fab icon="favorite" ></paper-fab>
+                        </div>        
+
+            <paper-fab icon="save" ></paper-fab>
                         </div>
-        
+
                 </section>
-        </core-header-panel> 
-        <paper-toast id="toast1" text="myResource"></paper-toast>
-                    
+        </core-header-panel>                     
     </body>
 </html>
