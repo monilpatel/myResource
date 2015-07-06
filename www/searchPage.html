@@ -1,6 +1,24 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-    <head>
+    <head>        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <script src="components/bower_components/webcomponentsjs/webcomponents.js"></script>
+        <script src ="components/bower_components/platform/platform.js"></script>
+        <link rel="import" href="components/bower_components/core-scaffold/core-scaffold.html">
+        <link rel="import" href="components/bower_components/core-header-panel/core-header-panel.html">
+        <link rel="import" href="components/bower_components/core-menu/core-menu.html">
+        <link rel="import" href="components/bower_components/core-item/core-item.html">
+        <link rel="import" href="components/bower_components/paper-toast/paper-toast.html">
+        <link rel="import" href="components/bower_components/paper-input/paper-input.html">                         <link rel="import" href="components/bower_components/paper-icon-button/paper-icon-button.html">
+
+
+        <link rel="import" href="components/bower_components/paper-fab/paper-fab.html"> 
+        <link rel = "import" href="components/bower_components/core-toolbar/core-toolbar.html">  
+        
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        -------------------------------
 <link rel="import" href="components/bower_components/polymer/polymer.html">
 <link rel="import" href="components/bower_components/core-icon-button/core-icon-button.html">
 <link rel="import" href="components/bower_components/core-toolbar/core-toolbar.html">
@@ -11,7 +29,8 @@
 <link rel="import" href="components/bower_components/paper-icon-button/paper-icon-button.html">
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="searchLink.js"></script>
-<link rel="import" href="components/bower_components/paper-fab/paper-fab.html">              
+<link rel="import" href="components/bower_components/paper-fab/paper-fab.html"> 
+
 
     <style>    
         
@@ -121,14 +140,16 @@
             <paper-icon-button id="searchBtn" icon="search"></paper-icon-button>
            
             </core-toolbar>
+            
                 <section id="section">
                     <div id="main">
                 <div class="heading" onclick="document.querySelector('#collapse1').toggle();">Brand Name</div>
          <core-collapse id="collapse1">
                 <div class="content" id="brand_name">
                   <div></div>
-                </div>
-         </core-collapse>
+             </div>
+                        </core-collapse>
+                 
 
          <div class="heading" onclick="document.querySelector('#collapse2').toggle();">Generic Name</div>
          <core-collapse id="collapse2">
@@ -151,8 +172,13 @@
                 </div>
          </core-collapse>
 
+
             <paper-fab icon="favorite" ></paper-fab>
                         </div>        
+
+            <paper-fab icon="save" ></paper-fab>
+                        </div>
+
                 </section>
         </core-header-panel>                     
     </body>

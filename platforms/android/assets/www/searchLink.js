@@ -1,5 +1,8 @@
 $(document).ready(function() {
+<<<<<<< Updated upstream
     $("#toast1").show();
+=======
+>>>>>>> Stashed changes
     $(".heading").hide();
     var searchFDA = function() {
          /* 'Cleaning out' the old information and getting the wanted search term */
@@ -12,7 +15,10 @@ $(document).ready(function() {
 			$("#generic_name").append("<p>"+data.results[0].openfda.generic_name+"</p>");
             $("#purpose").append("<p>"+data.results[0].purpose+"</p>");
             $(".heading").show();
+<<<<<<< Updated upstream
             
+=======
+>>>>>>> Stashed changes
 		});
         
         /* Grabbingdata from the JSON on the adverse events on te drug */
