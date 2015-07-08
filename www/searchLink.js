@@ -9,7 +9,7 @@ $(document).ready(function() {
             var brand, generic, purpose;
             /* Checking if the information is in the JSON and then displaying it */
 			(data.results[0].openfda.brand_name) ? brand = data.results[0].openfda.brand_name : brand = "No inormation found on brand name.";
-            $("#brandName").text(brand);
+            $("#brand_name").text(brand);
             
             (data.results[0].openfda.generic_name) ? generic = data.results[0].openfda.generic_name : generic = "No information found on generic name";
 			$("#generic_name").text(generic);
@@ -25,7 +25,7 @@ $(document).ready(function() {
 		$.getJSON("https://api.fda.gov/drug/event.json?search=brand_name:"+toAdd, function(data){
             var sideEffect;
             (data.results[0].patient.reaction[0].reactionmeddrapt) ? sideEffect = data.results[0].patient.reaction[0].reactionmeddrapt : sideEffect = "No information found on side effects.";
-			$("#side_effects").text(data.results[0].patient.reaction[0].reactionmeddrapt);
+			$("#side_effects").text(sideEffect);
 		}); 
     }
     $("#searchBtn").click(function() {
