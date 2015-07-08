@@ -102,9 +102,10 @@
                 margin-top: 20px;
             }
             paper-fab {
-                    position: fixed;
-                    right: 20px; 
-                    bottom: 20px;
+                    position:fixed;
+/*                    position: fixed;*/
+                    bottom:3%;
+                    right: 3%;
                 }
 
              .custom /deep/ ::-webkit-input-placeholder {
@@ -123,6 +124,10 @@
             #backBtn{
                 color:white;
             }
+        
+            .carrot{
+                float:right;
+            }
     </style>
 </head>
     
@@ -139,40 +144,61 @@
             </core-toolbar>            
             <section id="section">
                    <div id="main">
-                        <div class="heading" onclick="document.querySelector('#collapse1').toggle();">Brand Name</div>
-                        <core-collapse id="collapse1">
+                       
+<!--                       header of dropdown menu onclick will toggle the selected collapse menu-->
+                        <div class="heading" onclick="document.querySelector('#collapse1').toggle();">Brand Name <core-icon icon="arrow-drop-down" class="carrot"></core-icon></div>
+                        
+<!--                       inside collaspe for above header-->
+                       <core-collapse id="collapse1">
+<!--                           where the text will go, use id =brand_name in jquery section-->
                             <div class="content" id="brand_name">
                                 <div></div>
                             </div>
-                        </core-collapse>
-                 
+                        </core-collapse>                 
 
-                        <div class="heading" onclick="document.querySelector('#collapse2').toggle();">Generic Name</div>
+                        <div class="heading" onclick="document.querySelector('#collapse2').toggle();">Generic Name<core-icon icon="arrow-drop-down" class="carrot"></core-icon></div>
                              <core-collapse id="collapse2">
                                     <div class="content" id="generic_name">
                                       <div></div>
                                     </div>
                              </core-collapse>
 
-                             <div class="heading" onclick="document.querySelector('#collapse3').toggle();">Purpose</div>
+                             <div class="heading" onclick="document.querySelector('#collapse3').toggle();">Purpose<core-icon icon="arrow-drop-down" class="carrot"></core-icon></div>
                              <core-collapse id="collapse3">
                                     <div class="content" id="purpose">
                                       <div></div>
                                     </div>
                              </core-collapse>
 
-                             <div class="heading" onclick="document.querySelector('#collapse4').toggle();">Side Effects</div>
+                             <div class="heading" onclick="document.querySelector('#collapse4').toggle();">Side Effects<core-icon icon="arrow-drop-down" class="carrot"></core-icon></div>
                              <core-collapse id="collapse4">
                                     <div class="content" id="side_effects">
                                       <div></div>
                                     </div>
-                             </core-collapse>           
+                             </core-collapse>  
+                       
+                            <div class="heading" onclick="document.querySelector('#collapse5').toggle();">Active Ingredients<core-icon icon="arrow-drop-down" class="carrot"></core-icon></div>
+                             <core-collapse id="collapse5">
+                                    <div class="content" id="active_ingred">
+                                      <div></div>
+                                    </div>
+                             </core-collapse>  
+                       
+                            <div class="heading" onclick="document.querySelector('#collapse6').toggle();">Other Brands<core-icon icon="arrow-drop-down" class="carrot"></core-icon></div>
+                             <core-collapse id="collapse6">
+                                    <div class="content" id="other_brands">
+                                      <div></div>
+                                    </div>
+                             </core-collapse> 
 
-                            <paper-fab icon="save" ></paper-fab>
+                       
+                            
                      </div>
 
                 </section>
-        </core-header-panel>                
+        </core-header-panel> 
+        
+        <paper-fab icon="save" ></paper-fab>
         <paper-toast id="errortoast" text="Error. Invalid Input"></paper-toast>
 
     </body>
