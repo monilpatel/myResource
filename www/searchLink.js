@@ -27,7 +27,8 @@ $(document).ready(function() {
 		})
         
         .fail(function(){
-            /* Place code for when a bad tem is searched for here */
+            
+            document.querySelector('#errortoast').show();
         });
         
         

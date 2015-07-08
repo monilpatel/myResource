@@ -10,7 +10,8 @@
         <link rel="import" href="components/bower_components/core-menu/core-menu.html">
         <link rel="import" href="components/bower_components/core-item/core-item.html">
         <link rel="import" href="components/bower_components/paper-toast/paper-toast.html">
-        <link rel="import" href="components/bower_components/paper-input/paper-input.html">                         <link rel="import" href="components/bower_components/paper-icon-button/paper-icon-button.html">
+        <link rel="import" href="components/bower_components/paper-input/paper-input.html">                         
+        <link rel="import" href="components/bower_components/paper-icon-button/paper-icon-button.html">
 
 
         <link rel="import" href="components/bower_components/paper-fab/paper-fab.html"> 
@@ -120,12 +121,6 @@
         #backBtn{
             color:white;
         }
-        
-        paper-toast{
-          bottom: 0;
-          left: 0;
-          width: 100%;
-        }
     </style>
     </head>
     <body>
@@ -173,13 +168,15 @@
          </core-collapse>
 
 
-            <paper-fab icon="favorite" ></paper-fab>
-                        </div>        
+            
 
             <paper-fab icon="save" ></paper-fab>
                         </div>
 
                 </section>
-        </core-header-panel>                     
+        </core-header-panel>  
+               
+        <paper-toast id="errortoast" text="Error, Invalid Input"></paper-toast>
+
     </body>
 </html>
