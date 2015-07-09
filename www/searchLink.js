@@ -1,5 +1,9 @@
 $(document).ready(function() {
+    
+    /* We hide the information menu from the user before any search is done */
     $(".heading").hide();
+    
+    /* This function will handle the task of searching information from the openFDA API */
     var searchFDA = function() {
          /* Getting the wanted search term */
     	var toAdd = $("#searchValue").val();
@@ -27,46 +31,41 @@ $(document).ready(function() {
             $("#purpose").text(purpose);
             
             $(".heading").show();
-            
 		})
-        
+        /* This function will execute will tell the user the drug ins't found when no valid json is returned  */
         .fail(function(){
-            
             document.querySelector('#errortoast').show();
         });
-        
         
         /* Grabbing data from the JSON on the adverse events on the drug */
 		$.getJSON("https://api.fda.gov/drug/event.json?search=brand_name:"+toAdd, function(data){
             var brands, activeIngredient;
-            (data.results[0].patient.drug[0].openfda.brand_name[0]) ? brands = data.results[0].patient.drug[0].openfda.brand_name[0] : brands = "No information found on other brands.";
+            (data.results[0].patient.drug[0].openfda.brand_name[0]) ? 
+                brands = data.results[0].patient.drug[0].openfda.brand_name[0] : brands = "No information found on other brands.";
             
+            /* Grabbing up to 10 brand names and displaying them */
             var length = data.results[0].patient.drug[0].openfda.brand_name.length;
             
             for (var i = 1; i < length && i < 10; ++i) {
-                if (i === 10 || i === length) {
-                    brands += data.results[0].patient.drug[0].openfda.brand_name[i];
-                } else {
-                    brands += ","+data.results[0].patient.drug[0].openfda.brand_name[i];
-                }
+                brands += ","+data.results[0].patient.drug[0].openfda.brand_name[i];
             }
             
             $("#other_brands").text(brands);
             
-            (data.results[0].active_ingredient) ? activeIngredient = data.results[0].active_ingredient : activeIngredient = "No information found on active ingredients.";
+            /*  Grabbing and displaying the information for active ingredients */
+            (data.results[0].active_ingredient) ? 
+                activeIngredient = data.results[0].active_ingredient : activeIngredient = "No information found on active ingredients.";
+            
             $("#active_ingred").text(activeIngredient);
 		}); 
         
+        /* Third JSON request to get every single side effect and ranked by reported occurences with their reported counts */
         $.getJSON("https://api.fda.gov/drug/event.json?search="+ toAdd +"&count=patient.reaction.reactionmeddrapt.exact", function(data){
             var sideEffect;
-            
+            /* Grabbing the side-effects and then following four form the array */
             (data.results[0]) ? sideEffect = data.results[0].term : sideEffect = "No information found on sideffects";
             for(var i = 1; i < data.results.length && i < 5 ; ++i) {
-                if (i===5 || i ===data.results.length) {
-                    sideEffect += data.results[i].term;
-                } else {
-                    sideEffect += ","+data.results[i].term;
-                }
+                sideEffect += ","+data.results[i].term;
             }
             $("#side_effects").text(sideEffect);
         });
