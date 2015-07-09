@@ -17,12 +17,15 @@
 
 
         <link rel="import" href="components/bower_components/paper-fab/paper-fab.html"> 
-        <link rel = "import" href="components/bower_components/core-toolbar/core-toolbar.html">  
+        <link rel = "import" href="components/bower_components/core-toolbar/core-toolbar.html"> 
+        <link href='http://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
         
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
             app.initialize();
+            
+            
         </script>
         
         
@@ -47,18 +50,27 @@
               }
               #core_toolbar {
                 color: rgb(255, 255, 255);
-                background-color: rgb(79, 125, 201);
+                background-color: rgb(218,67,54);
               }
               #section {
                 height: 1000px;
-                background: #FAFAFA);
+                background: rgb(235,235,235);
               }
             
             #searchBtn {
                 float:right;
                 color:white;
             }
-            
+            #core_card {
+                position: absolute;
+                width: 99%;
+                height: 10%;
+                border-radius: 2px;
+                box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+                background-color: rgb(255, 255, 255);
+                padding: 10px 15px;
+                margin:1%;
+          }
             #tap {float: bottom; } 
             </style>
         <body>
@@ -68,7 +80,12 @@
                 <div id="div" flex>myResource</div>
                   <a href= "searchPage.html" id="searchBtn"><paper-icon-button id="searchBtn" icon="search"></paper-icon-button></a>              
               </core-toolbar>
-              <section id="section"></section>
+              <section id="section">
+                
+                  <core-card id="core_card" layout vertical> Motrin <div>purpose</div></core-card>
+
+                
+              </section>
             </core-header-panel>
             
         </body>
