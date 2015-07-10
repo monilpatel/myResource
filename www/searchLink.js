@@ -1,7 +1,7 @@
 $(document).ready(function() {
     
     /* We hide the information menu from the user before any search is done */
-    $(".heading").hide();
+    $("#main").hide();
     
     var fixCasing = function(str) {
         str = str.toLowerCase();
@@ -25,13 +25,14 @@ $(document).ready(function() {
             
             /* Getting and dispaying brand name*/
 			(data.results[0].openfda.brand_name) ? 
-                brand = data.results[0].openfda.brand_name : brand = "No inormation found on brand name.";
+                brand = data.results[0].openfda.brand_name+"" : brand = "No inormation found on brand name.";
+            brand = fixCasing(brand);
             $("#brand_name").text(brand);
             
             /* Getting and displaying generic name */
             (data.results[0].openfda.generic_name) ? 
-                generic = data.results[0].openfda.generic_name : generic = "No information found on generic name";
-			
+                generic = data.results[0].openfda.generic_name+"" : generic = "No information found on generic name";
+            generic = fixCasing(generic);
             $("#generic_name").text(generic);
             
             /* Getting and displaying purpose */
@@ -39,7 +40,7 @@ $(document).ready(function() {
                 purpose = data.results[0].purpose : purpose = "No information found on purpose.";
             $("#purpose").text(purpose);
             
-            $(".heading").show();
+            $("#main").show();
 		})
         /* This function will execute will tell the user the drug ins't found when no valid json is returned  */
         .fail(function(){
@@ -57,19 +58,20 @@ $(document).ready(function() {
             /* Grabbing up to 10 brand names and displaying them */
             var drugLength = data.results[0].patient.drug.length;
             var brandCount = 0;
+            
             for (var j = 0; j < drugLength; j++) {
                 if(data.results[0].patient.drug[j].openfda){
-                    
                     var brandLength = data.results[0].patient.drug[j].openfda.brand_name.length
+                    
                     for (var i = 1; i < brandLength && brandCount < 10; i++) {
                         brands += ", "+data.results[0].patient.drug[j].openfda.brand_name[i];
                         brandCount++;
                     }
                 }
             }
+        
             brands = fixCasing(brands);
-            
-            
+        
             $("#other_brands").text(brands);
             
             /* Grabbing and displaying the information for active ingredients */
