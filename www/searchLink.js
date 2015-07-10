@@ -21,12 +21,12 @@ $(document).ready(function() {
 		var jqxhr = $.getJSON("https://api.fda.gov/drug/label.json?search=brand_name:"+toAdd, function(data) {
             var brand, generic, purpose;
             
-            /* Checking if the information is in the JSON and then displaying it */
-            
             /* Getting and dispaying brand name*/
 			(data.results[0].openfda.brand_name) ? 
                 brand = data.results[0].openfda.brand_name+"" : brand = "No inormation found on brand name.";
             brand = fixCasing(brand);
+            
+            
             $("#brand_name").text(brand);
             
             /* Getting and displaying generic name */
@@ -93,8 +93,13 @@ $(document).ready(function() {
                 sideEffect += ", "+data.results[i].term;
             }
             sideEffect = fixCasing(sideEffect);
+            
             $("#side_effects").text(sideEffect);
             
+            /* This will pop open the first collapsible menu item to further show the user their search has worked */
+            if (!document.querySelector('#collapse1').opened) {
+                document.querySelector('#collapse1').toggle();
+            }
         });
     }
     /* The two ways for the user to prompt a search : clicking the search button or hitting enter */
