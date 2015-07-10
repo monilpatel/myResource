@@ -26,10 +26,10 @@
         <link rel="import" href="components/bower_components/core-icon-button/core-icon-button.html">
         <link rel="import" href="components/bower_components/core-toolbar/core-toolbar.html">
         <link rel="import" href="components/bower_components/core-input/core-input.html">
-        <!link rel="import" href="components/bower_components/paper-input/paper-input.html">
+        <link rel="import" href="components/bower_components/paper-input/paper-input.html">
         <link rel="import" href="components/bower_components/core-collapse/core-collapse.html">
 
-        <!link rel="import" href="components/bower_components/paper-icon-button/paper-icon-button.html">
+        <link rel="import" href="components/bower_components/paper-icon-button/paper-icon-button.html">
         <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
         <script type="text/javascript" src="searchLink.js"></script>
         <link rel="import" href="components/bower_components/paper-fab/paper-fab.html"> 
@@ -94,9 +94,7 @@
               border-top: none;
               border-bottom-left-radius: 5px;
               border-bottom-right-radius: 5px;
-              font-family: 'Roboto',sans-serif;
-              text-transform: capitalize;
-
+              font-family: sans-serif;
 
             }
 
@@ -133,6 +131,7 @@
             .carrot{
                 float:right;
             }
+        
          paper-input {
         width: 100%;
       }
@@ -157,7 +156,7 @@
                         <div class="heading" onclick="document.querySelector('#collapse1').toggle();">Brand Name <core-icon icon="arrow-drop-down" class="carrot"></core-icon></div>
                         
 <!--                       inside collaspe for above header-->
-                       <core-collapse id="collapse1" duration=".1">
+                       <core-collapse id="collapse1">
 <!--                           where the text will go, use id =brand_name in jquery section-->
                             <div class="content" id="brand_name">
                                 <div></div>
@@ -165,35 +164,35 @@
                         </core-collapse>                 
 
                         <div class="heading" onclick="document.querySelector('#collapse2').toggle();">Generic Name<core-icon icon="arrow-drop-down" class="carrot"></core-icon></div>
-                             <core-collapse id="collapse2" duration=".1">
+                             <core-collapse id="collapse2">
                                     <div class="content" id="generic_name">
                                       <div></div>
                                     </div>
                              </core-collapse>
 
                              <div class="heading" onclick="document.querySelector('#collapse3').toggle();">Purpose<core-icon icon="arrow-drop-down" class="carrot"></core-icon></div>
-                             <core-collapse id="collapse3" duration=".1">
+                             <core-collapse id="collapse3">
                                     <div class="content" id="purpose">
                                       <div></div>
                                     </div>
                              </core-collapse>
 
                              <div class="heading" onclick="document.querySelector('#collapse4').toggle();">Side Effects<core-icon icon="arrow-drop-down" class="carrot"></core-icon></div>
-                             <core-collapse id="collapse4" duration=".1">
+                             <core-collapse id="collapse4">
                                     <div class="content" id="side_effects">
                                       <div></div>
                                     </div>
                              </core-collapse>  
                        
                             <div class="heading" onclick="document.querySelector('#collapse5').toggle();">Active Ingredients<core-icon icon="arrow-drop-down" class="carrot"></core-icon></div>
-                             <core-collapse id="collapse5" duration=".1">
+                             <core-collapse id="collapse5">
                                     <div class="content" id="active_ingred">
                                       <div></div>
                                     </div>
                              </core-collapse>  
                        
                             <div class="heading" onclick="document.querySelector('#collapse6').toggle();">Other Brands<core-icon icon="arrow-drop-down" class="carrot"></core-icon></div>
-                             <core-collapse id="collapse6" duration=".1">
+                             <core-collapse id="collapse6">
                                     <div class="content" id="other_brands">
                                       <div></div>
                                     </div>
@@ -207,7 +206,7 @@
         </core-header-panel> 
         
         <paper-fab icon="save" ></paper-fab>
-        <paper-toast id="errortoast" text="Drug not found."></paper-toast>
+        <paper-toast id="errortoast" text="Error. Invalid Input"></paper-toast>
 
     </body>
 </html>
