@@ -3,6 +3,15 @@ $(document).ready(function() {
     /* We hide the information menu from the user before any search is done */
     $(".heading").hide();
     
+    var fixCasing = function(str) {
+        str = str.toLowerCase();
+        for (var i = 1; i < str.length; i++) {
+            if(str[i -1] === " ") {
+                str[i].toUpperCase();
+            }
+        } 
+        return str;
+    };
     /* This function will handle the task of searching information from the openFDA API */
     var searchFDA = function() {
          /* Getting the wanted search term */
@@ -53,11 +62,12 @@ $(document).ready(function() {
                     
                     var brandLength = data.results[0].patient.drug[j].openfda.brand_name.length
                     for (var i = 1; i < brandLength && brandCount < 10; i++) {
-                        brands += ","+data.results[0].patient.drug[j].openfda.brand_name[i];
+                        brands += ", "+data.results[0].patient.drug[j].openfda.brand_name[i];
                         brandCount++;
                     }
                 }
             }
+            brands = fixCasing(brands);
             
             
             $("#other_brands").text(brands);
@@ -78,10 +88,11 @@ $(document).ready(function() {
                 sideEffect = data.results[0].term : sideEffect = "No information found on sideffects";
             
             for(var i = 1; i < data.results.length && i < 5 ; ++i) {
-                sideEffect += ","+data.results[i].term;
+                sideEffect += ", "+data.results[i].term;
             }
-            
+            sideEffect = fixcasing(sideEffect);
             $("#side_effects").text(sideEffect);
+            
         });
     }
     /* The two ways for the user to prompt a search : clicking the search button or hitting enter */
