@@ -42,15 +42,23 @@ $(document).ready(function() {
             var brands, activeIngredient;
             
             /* Checking if the brands array exists and intializing the brands variable */
-            (data.results[0].patient.drug[0].openfda.brand_name[0]) ? 
+            (data.results[0].patient.drug[0].openfda) ? 
                 brands = data.results[0].patient.drug[0].openfda.brand_name[0] : brands = "No information found on other brands.";
             
             /* Grabbing up to 10 brand names and displaying them */
-            var length = data.results[0].patient.drug[0].openfda.brand_name.length;
-            
-            for (var i = 1; i < length && i < 10; ++i) {
-                brands += "," + data.results[0].patient.drug[0].openfda.brand_name[i];
+            var drugLength = data.results[0].patient.drug.length;
+            var brandCount = 0;
+            for (var j = 0; j < drugLength; j++) {
+                if(data.results[0].patient.drug[j].openfda){
+                    
+                    var brandLength = data.results[0].patient.drug[j].openfda.brand_name.length
+                    for (var i = 1; i < brandLength && brandCount < 10; i++) {
+                        brands += ","+data.results[0].patient.drug[j].openfda.brand_name[i];
+                        brandCount++;
+                    }
+                }
             }
+            
             
             $("#other_brands").text(brands);
             
