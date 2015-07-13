@@ -1,5 +1,5 @@
 function enableBtn(){
-     document.getElementById("b").disabled = false;
+     document.getElementById("saveBtn").disabled = false;
     
     /* $('#searchBtn').on('click', function(e){
      document.getElementById("b").disabled = false;
@@ -16,7 +16,6 @@ function savedSearches(){
          //submitListener();
         addDrug(e);
      });*/
-
     
         //MUST ADD VALIDATION FOR NUMBER OF CLICKS...
    // $('#b').on('click', function(e){
@@ -58,17 +57,12 @@ function savedSearches(){
             })
     
         }
-          document.getElementById("b").disabled = true;
-        document.getElementById("b").addEventListener("click", savedSearches);
+          document.getElementById("saveBtn").disabled = true;
+        document.getElementById("saveBtn").addEventListener("click", addDrug);
         console.log('display drug');
     
     }
-    
-    
-                  
-                  
-                  
-                  
+                                 
    //function to sort drug names 
     function sortByName(a,b){
         var aName = a.id;
@@ -86,20 +80,7 @@ function savedSearches(){
         }
     }
                   
-                  
-  //functio to listen of save event listener
-    function submitListener(){
-  console.log("going into submit listener");      //document.getElementById("b").addEventListener("click", addDrug);
-        
-     $('#b').on('click', function(){
-        addDrug();
-     });
-     document.getElementById("b").click = null;
-    console.log("leaving submit");
-    
-    }
-                  
-                  
+
     //Function to add a drug save
     function addDrug(){
         
@@ -107,10 +88,9 @@ function savedSearches(){
         var id = $("#searchValue").val();
         
         //MUST add input validation later...
-        
         var brandNm = document.getElementById("brand_name").innerHTML;
-        alert(id);
-        alert(brandNm);
+        //alert(id);
+        //alert(brandNm);
         
         
         //Simple Validation
@@ -144,67 +124,11 @@ function savedSearches(){
             
             console.log('Drug Added');
             
-            document.getElementById("b").disabled = true;
+            document.getElementById("saveBtn").disabled = true;
          
-            console.log("button disabled");                
+            console.log("save button disabled");                
                     
         }
     }
      
  
-
-
-    
-
-    
-    
-
-
-
-
-
-
-
-
-
-/*function savedSearches(){
-        var brandNm = document.getElementById("brand_name").innerHTML;
-        
-        var genericNm = document.getElementById("generic_name").innerHTML;
-       
-        
-        var drugPurpose = document.getElementById("purpose").innerHTML;
-        
-        var effects = document.getElementById("side_effects").innerHTML;
-
-        var active = document.getElementById("active_ingred").innerHTML;
-
-        var altBrand = document.getElementById("other_brands").innerHTML;
-
-
-     //creating object for given drug from retrieved from core collapses #1,2,3,4,5,6
-        var drug = 
-            {
-                brand: brandNm,
-                generic: genericNm,
-                reason: drugPurpose,
-                sideEffects: effects,
-                ingredient: active,
-                alternative: altBrand
-            };
-        
-        var nameKey = $("#searchValue").val();
-        alert(nameKey);
-
-        window.localStorage.setItem(nameKey, JSON.stringify(drug));
-        
-
-       
-        //alert(keyNames[0]);
-        
-        //$('#results').html("Drugs: " + window.localStorage.getItem(drug));
-        //document.getElementById("results").innerHTML = "Saved drugs: " + keyNames[0];
-
-return true;
-
-}*/
