@@ -1,37 +1,15 @@
+
 function enableBtn(){
      document.getElementById("saveBtn").disabled = false;
-    
-    /* $('#searchBtn').on('click', function(e){
-     document.getElementById("b").disabled = false;
-     });*/
-
 }
 
 function savedSearches(){
-  // document.getElementById("searchBtn").addEventListener("click", submitListener);
-
-    /* $('#searchBtn').on('click', function(e){
-       
-      
-         //submitListener();
-        addDrug(e);
-     });*/
-    
-        //MUST ADD VALIDATION FOR NUMBER OF CLICKS...
-   // $('#b').on('click', function(e){
-        
-        addDrug();
-        
-  // });
-        
-    
+        addDrug();  
  }
-// displayDrugs();
-    
+ 
         
-        
-    //function to display drug list
- window.onload =  function displayDrugs(){
+ //function to display drug list
+ function displayDrugs(){
 
         //get drugs
         var drugList = JSON.parse(localStorage.getItem('drugs'));
@@ -47,9 +25,9 @@ function savedSearches(){
         if(drugList != null) {
             //loop through array and display
             $.each(drugList, function(key, value){
-                $("#drug_table").append('<tr id= "' + value.id + '">'+ 
+                $("#drug_table").append ('<tr id= "' + value.id + '">'+ 
                 '<td>' + value.id + '</td>' + 
-                '<td><a href="a" id="remove-drug">Clear</a> | <a href="#" id="more_info">View Info</a></td>' +
+                '<td><a href="#" id="remove_drug" data-id="'+ value.id +'">Clear</a> | <a href="#" id="more_info">View Info</a></td>' +
                 '</tr>');
                 
               //  alert(value.brand);
@@ -57,10 +35,9 @@ function savedSearches(){
             })
     
         }
-          document.getElementById("saveBtn").disabled = true;
+        document.getElementById("saveBtn").disabled = true;
         document.getElementById("saveBtn").addEventListener("click", addDrug);
-        console.log('display drug');
-    
+        console.log('display drug'); 
     }
                                  
    //function to sort drug names 
@@ -82,7 +59,7 @@ function savedSearches(){
                   
 
     //Function to add a drug save
-    function addDrug(){
+    function addDrug(e){
         
         //Add unique ID using drug name
         var id = $("#searchValue").val();
@@ -104,10 +81,21 @@ function savedSearches(){
             //check for drugs
             if(drugs == null){
                 drugs = [];
-            }//add else statement to verify name has already 
+            }else{
+            
+           
             
             //variable reference to array
             var drugList = JSON.parse(localStorage.getItem('drugs'));
+            
+            //loop to make sure we have the correct drug name to delete
+        for(var i=0; i < drugList.length; i++){
+            if(drugList[i].id == id){
+               alert('drug name is already save');
+                e.preventDefault();
+            }
+        }
+            }
             
             //New drug object
             var new_drug = {
@@ -130,5 +118,40 @@ function savedSearches(){
                     
         }
     }
+
+
+    //Function to remove drug
+    function removeDrug(id){
+      if(confirm('Are you sure you want to delete this saved drug?')){
+         var drugList = JSON.parse(localStorage.getItem('drugs')); 
+        
+        //loop to make sure we have the correct drug name to delete
+        for(var i=0; i < drugList.length; i++){
+            if(drugList[i].id == id){
+               drugList.splice(i,1);
+            }
+        
+            //then reset array of objects, excluding the object [drug] that was just deleted
+            localStorage.setItem('drugs', JSON.stringify(drugList));
+        }
+        
+        //after making changes, reload the page
+        location.reload();
+        
+        }
+
+    }
+                
      
- 
+        
+        
+    //Function to clear all save drugs
+    function clearAllDrugs(){
+        if(confirm('Are you sure you want to delete all drugs?')){
+         localStorage.clear('drugs');
+           //localStorage.clear();
+            location.reload();             
+        }
+    }
+         
+
