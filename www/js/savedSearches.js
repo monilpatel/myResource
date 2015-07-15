@@ -25,9 +25,9 @@ function savedSearches(){
         if(drugList != null) {
             //loop through array and display
             $.each(drugList, function(key, value){
-                $("#drug_table").append ('<tr id= "' + value.id + '">'+ 
+                $("#drug_table").append('<tr id= "' + value.id + '">'+ 
                 '<td>' + value.id + '</td>' + 
-                '<td><a href="#" id="remove_drug" data-id="'+ value.id +'">Clear</a> | <a href="#" id="more_info">View Info</a></td>' +
+                '<td><a href="#" id="remove_drug" data-id="'+ value.id +'">Clear</a> | <a href="infoPage.html?id="'+ value.id +'" id="more_info" data-id="'+ value.id +'">View Info</a></td>' +
                 '</tr>');
                 
               //  alert(value.brand);
@@ -63,13 +63,19 @@ function savedSearches(){
         
         //Add unique ID using drug name
         var id = $("#searchValue").val();
-        
-        //MUST add input validation later...
+      
         var brandNm = document.getElementById("brand_name").innerHTML;
-        //alert(id);
-        //alert(brandNm);
         
-        
+        var genericNm = document.getElementById("generic_name").innerHTML;
+         
+        var purpose = document.getElementById("purpose").innerHTML;
+          
+        var effects = document.getElementById("side_effects").innerHTML;
+           
+        var ingredient = document.getElementById("active_ingred").innerHTML;
+            
+        var altBrand = document.getElementById("other_brands").innerHTML;
+             
         //Simple Validation
         if(id == ''){
             alert('drug name is required');
@@ -78,7 +84,7 @@ function savedSearches(){
             
             drugs = JSON.parse(localStorage.getItem('drugs'));
             
-            //check for drugs
+            //check if to see if storage of drugs already exist
             if(drugs == null){
                 drugs = [];
             }else{
@@ -93,6 +99,7 @@ function savedSearches(){
             if(drugList[i].id == id){
                alert('drug name is already save');
                 e.preventDefault();
+                return;
             }
         }
             }
@@ -100,7 +107,12 @@ function savedSearches(){
             //New drug object
             var new_drug = {
                 "id" : id,
-                "brand" : brandNm
+                "brand" : brandNm,
+                "generic": genericNm,
+                "reason": purpose,
+                "effects": effects,
+                "active": ingredient,
+                "altBrand": altBrand
             } 
             
             //add "new_drug" object of drug list array
@@ -153,5 +165,8 @@ function savedSearches(){
             location.reload();             
         }
     }
+
+
+
          
 
