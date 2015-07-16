@@ -27,8 +27,10 @@
             font-size: 2.575em; 
             font-family: 'Roboto',sans-serif; 
             margin-bottom: 5%;
+            margin-left: 0%;
             text-decoration: underline;
-            text-decoration-style:wavy;  
+            float: left;
+            
         }
         
         #fieldText{
@@ -38,7 +40,8 @@
         
         #sidebar {
             font-size: 1.175em; /* 30px/16=1.875em */
-            font-family: 'Roboto',sans-serif;   
+            font-family: 'Roboto',sans-serif;  
+            margin-left: 5%;
         }
         
        #sidebar, #purpose, #effects, #active_ingred, #alt_Brand, #warning   { 
@@ -80,6 +83,15 @@
             
             color:white;
         }
+        
+        
+        #image{
+            float:right;
+            clear:both;
+            
+            
+        
+        }
     </style>
     <body>
         <core-drawer-panel id="drawerPanel">
@@ -104,10 +116,10 @@
                     <a href= "index.html"><core-icon icon="home" id="home"></core-icon></a>
                 </core-toolbar>
                 <div class="content">
-                    <core-card class="core_card" layout vertical><div id="field"><b>Field Title</b></div>
+                    <core-card class="core_card" layout vertical><div id="image"><h1 id="field">Field Title</h1></div>
                     
-                        <div id="fieldText">
-                            
+                        <div>
+            </div><div id="fieldText">
                             
                            </div>
                     

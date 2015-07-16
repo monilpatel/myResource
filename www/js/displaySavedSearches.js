@@ -40,11 +40,9 @@ $('#drug_table').on('click','#remove_drug', function(e){
      
       displayDrugs();
      
-     
-         
+       
     
     function moreInfo(id){
-        if(confirm('You want to receive more info?')){
          var drugList = JSON.parse(localStorage.getItem('drugs')); 
         var specific_drug;
         
@@ -60,5 +58,5 @@ $('#drug_table').on('click','#remove_drug', function(e){
         console.log('drug is now specified');
        
     }
-}
+
 });

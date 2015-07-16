@@ -63,6 +63,7 @@ function savedSearches(){
         
         //Add unique ID using drug name
         var id = $("#searchValue").val();
+        id = id.charAt(0).toUpperCase() + id.substr(1).toLowerCase();
       
         var brandNm = document.getElementById("brand_name").innerHTML;
         
