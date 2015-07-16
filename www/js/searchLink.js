@@ -47,9 +47,14 @@ $(document).ready(function() {
             $("#active_ingred").text(activeIngredient);
             $.getJSON("https://api.fda.gov/drug/label.json?search=generic_name:"+generic+"&count=openfda.brand_name.exact",function(jso){
                 var brands;
-                jso.results[0] ? brands = jso.results[0].term : brands = "No information found on other brands.";              
-                for(var i = 1; i < jso.results.length && i < 10; i++) {
-                    brands +=", "+ jso.results[i].term;
+                jso.results[0] ? brands = "" : brands = "No information found on other brands.";              
+                for(var i = 0; i < jso.results.length && i < 10; i++) {
+                    var currBrand = fixCasing(jso.results[i].term + "");
+                    if (currBrand !== brand || toAdd !== currBrand) {
+                        brands += currBrand + "";
+                        i === 9 || i === (jso.results.length - 1) ? brands += "": brands +=", ";
+                    }
+                    
                }
                 $("#other_brands").text(brands);
             });
