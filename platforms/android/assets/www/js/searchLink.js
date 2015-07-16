@@ -2,7 +2,17 @@ $(document).ready(function() {
     
     /* We hide the information menu from the user before any search is done */
     $(".heading").hide();
-    
+    /* Function to fix casing on strings */
+    var fixCasing = function(str) {
+        str = str.toLowerCase();
+        str[0] = str[0].toUpperCase();
+        for (var i = 1; i < str.length; i++) {
+            if (str[i-1] === " ") {
+                str[i] = str[i].toUpperCase();
+            }
+        }
+        return str;
+    }
     /* This function will handle the task of searching information from the openFDA API */
     var searchFDA = function() {
          /* Getting the wanted search term */
@@ -16,18 +26,19 @@ $(document).ready(function() {
             
             /* Getting and dispaying brand name*/
 			(data.results[0].openfda.brand_name) ? 
-                brand = data.results[0].openfda.brand_name : brand = "No inormation found on brand name.";
+                brand = data.results[0].openfda.brand_name + "" : brand = "No information found on brand name.";
+            brand = fixCasing(brand);
             $("#brand_name").text(brand);
             
             /* Getting and displaying generic name */
             (data.results[0].openfda.generic_name) ? 
-                generic = data.results[0].openfda.generic_name : generic = "No information found on generic name";
-			
+                generic = data.results[0].openfda.generic_name + "": generic = "No information found on generic name";
+			generic = fixCasing(generic);
             $("#generic_name").text(generic);
             
             /* Getting and displaying purpose */
             (data.results[0].purpose) ? 
-                purpose = data.results[0].purpose : purpose = "No information found on purpose.";
+                purpose = data.results[0].purpose + "" : purpose = "No information found on purpose.";
             $("#purpose").text(purpose);
             
             $(".heading").show();
@@ -49,9 +60,9 @@ $(document).ready(function() {
             var length = data.results[0].patient.drug[0].openfda.brand_name.length;
             
             for (var i = 1; i < length && i < 10; ++i) {
-                brands += "," + data.results[0].patient.drug[0].openfda.brand_name[i];
+                brands += ", " + data.results[0].patient.drug[0].openfda.brand_name[i];
             }
-            
+            brands = fixCasing(brands);
             $("#other_brands").text(brands);
             
             /* Grabbing and displaying the information for active ingredients */
@@ -70,9 +81,9 @@ $(document).ready(function() {
                 sideEffect = data.results[0].term : sideEffect = "No information found on sideffects";
             
             for(var i = 1; i < data.results.length && i < 5 ; ++i) {
-                sideEffect += ","+data.results[i].term;
+                sideEffect += ", "+data.results[i].term;
             }
-            
+            sideEffect = fixCasing(sideEffect);
             $("#side_effects").text(sideEffect);
         });
     }
