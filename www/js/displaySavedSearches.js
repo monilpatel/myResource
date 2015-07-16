@@ -26,7 +26,7 @@ $('#drug_table').on('click','#remove_drug', function(e){
    
     key = $(this).data('id');
         
-    alert(key);    
+    //alert(key);    
     console.log("drug from list");
     var check_storage = JSON.parse(localStorage.getItem('drug'));
       /* if(check_storage != null){
@@ -51,7 +51,7 @@ $('#drug_table').on('click','#remove_drug', function(e){
         //loop to make sure we have the correct drug name to delete
         for(var i=0; i < drugList.length; i++){
             if(drugList[i].id == id){
-                alert("found a match:" + drugList[i].brand); 
+                //alert("found a match:" + drugList[i].brand); 
                 specific_drug = drugList[i];
             }
             
