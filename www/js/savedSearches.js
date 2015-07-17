@@ -1,11 +1,13 @@
+var checkBtn = false;
 
 function enableBtn(){
-     document.getElementById("saveBtn").disabled = false;
+    if(checkBtn == true){   document.getElementById("saveBtn").disabled = false;
+    }
 }
 
-function savedSearches(){
+/*function savedSearches(){
         addDrug();  
- }
+ }*/
  
         
  //function to display drug list
@@ -35,8 +37,7 @@ function savedSearches(){
             })
     
         }
-        document.getElementById("saveBtn").disabled = true;
-        document.getElementById("saveBtn").addEventListener("click", addDrug);
+        //document.getElementById("saveBtn").disabled = true;
         console.log('display drug'); 
     }
                                  
@@ -60,6 +61,7 @@ function savedSearches(){
 
     //Function to add a drug save
     function addDrug(e){
+        if(checkBtn == true){
         
         //Add unique ID using drug name
         var id = $("#searchValue").val();
@@ -128,10 +130,10 @@ function savedSearches(){
             document.getElementById("saveBtn").disabled = true;
          
             console.log("save button disabled");                
-                    
+            checkBtn = false;    
         }
     }
-
+    }
 
     //Function to remove drug
     function removeDrug(id){

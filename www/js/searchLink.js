@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    
+    console.log(checkBtn);
     /* We hide the information menu from the user before any search is done */
     $(".heading").hide();
     /* Function to fix casing on strings */
@@ -84,11 +84,15 @@ $(document).ready(function() {
     /* The two ways for the user to prompt a search : clicking the search button or hitting enter */
     $("#searchBtn").click(function() {
        searchFDA();
+        checkBtn = true;
+        enableBtn();
     });
     
     $(document).keypress(function(event) {
         if (event.which === 13){
             searchFDA();
+            checkBtn = true;
+            enableBtn();
         }
     });
 });

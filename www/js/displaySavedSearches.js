@@ -1,5 +1,9 @@
  $(document).ready(function() {
-          
+    $('#saveBtn').click(function(e){
+        addDrug(e);
+    });
+     
+    
     $(document).keypress(function(e) {
         if (e.which === 13) {
             enableBtn();
