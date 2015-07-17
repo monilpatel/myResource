@@ -30,8 +30,9 @@ $(document).ready(function() {
             (data.results[0].when_using) ? instructs += data.results[0].when_using+"" : instructs += "";
             (data.results[0].storage_and_handling) ? instructs += data.results[0].storage_and_handling+"" : instructs += "";
             $("#instructions").text(instructs);
-            
             /* Displaying warnings to the user */
+            (data.results[0].warnings) ? warnings = data.results[0].warnings+"" : warnings = "";
+            $("#warnings").text(warnings);
             /* Getting and dispaying brand name*/
 			(data.results[0].openfda.brand_name) ? 
                 brand = data.results[0].openfda.brand_name + "" : brand = "No information found on brand name.";
