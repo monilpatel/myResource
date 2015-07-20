@@ -29,7 +29,10 @@ function enableBtn(){
             $.each(drugList, function(key, value){
                 $("#drug_table").append('<tr id= "' + value.id + '">'+ 
                 '<td>' + value.id + '</td>' + 
-                '<td><a href="#" id="remove_drug" data-id="'+ value.id +'">Clear</a> | <a href="infoPage.html?id="'+ value.id +'" id="more_info" data-id="'+ value.id +'">View Info</a></td>' +
+               /* '<td><a href="#" id="remove_drug" data-id="'+ value.id +'">Clear</a> | <a href="infoPage.html?id="'+ value.id +'" id="more_info" data-id="'+ value.id +'">View Info</a></td>' +
+                '</tr>');*/
+                                        
+                '<td><a href="#" id="remove_drug" data-id="'+ value.id +'"><core-icon id="delete" icon="delete"></core-icon></a> <a href="infoPage.html?id="'+ value.id +'" id="more_info" data-id="'+ value.id +'"><core-icon id="moreInfo" icon="info"></core-icon></a></td>' +
                 '</tr>');
                 
               //  alert(value.brand);
