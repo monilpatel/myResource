@@ -24,14 +24,20 @@ $(document).ready(function() {
             
             /* Checking if the information is in the JSON and then displaying it */
             /* Displaying the instructions for the user */
-            (data.results[0].description) ? instructs = data.results[0].description+"" : instructs += "";
-            (data.results[0].indications_and_usage) ? instructs += data.results[0].indications_and_usage+"" : instructs+="";
-            (data.results[0].instructions_for_use) ? instructs += data.results[0].instructions_for_use+"" : instructs+="";
-            (data.results[0].when_using) ? instructs += data.results[0].when_using+"" : instructs += "";
-            (data.results[0].storage_and_handling) ? instructs += data.results[0].storage_and_handling+"" : instructs += "";
+            (data.results[0].description) ? 
+                instructs = data.results[0].description+"" : instructs += "";
+            (data.results[0].indications_and_usage) ? 
+                instructs += data.results[0].indications_and_usage+"" : instructs+="";
+            (data.results[0].instructions_for_use) ? 
+                instructs += data.results[0].instructions_for_use+"" : instructs+="";
+            (data.results[0].when_using) ? 
+                instructs += data.results[0].when_using+"" : instructs += "";
+            (data.results[0].storage_and_handling) ? 
+                instructs += data.results[0].storage_and_handling+"" : instructs += "";
             $("#instructions").text(instructs);
             /* Displaying warnings to the user */
-            (data.results[0].warnings) ? warnings = data.results[0].warnings+"" : warnings = "No information found on warnings";
+            (data.results[0].warnings) ? 
+                warnings = data.results[0].warnings+"" : warnings = "No information found on warnings";
             $("#warnings").text(warnings);
             /* Getting and dispaying brand name*/
 			(data.results[0].openfda.brand_name) ? 
