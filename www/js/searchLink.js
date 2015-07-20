@@ -92,7 +92,7 @@ $(document).ready(function() {
             for(var i = 1; i < data.results.length && i < 5 ; ++i) {
                 sideEffect += ", "+data.results[i].term;
             }
-            sideEffect = fixCasing(sideEffect);
+            //sideEffect = fixCasing(sideEffect);
             $("#side_effects").text(sideEffect);
         });
     }
