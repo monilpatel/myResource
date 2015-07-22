@@ -20,21 +20,24 @@ $(document).ready(function() {
         
         /* Grabbing data from the JSON on the SPL of the drug */
 		var jqxhr = $.getJSON("https://api.fda.gov/drug/label.json?search=brand_name:"+toAdd, function(data) {
-            var brand, generic, purpose, activeIngredient, warnings, instructs = "No information found on instructions.";
+            var brand, generic, purpose, activeIngredient, warnings, instructs = "";
             
             /* Checking if the information is in the JSON and then displaying it */
             /* Displaying the instructions for the user */
             (data.results[0].description) ? 
-                instructs = data.results[0].description+"" : instructs += "";
+                instructs = data.results[0].description+"<br/>" : instructs += "";
             (data.results[0].indications_and_usage) ? 
-                instructs += data.results[0].indications_and_usage+"" : instructs+="";
+                instructs += data.results[0].indications_and_usage+"<br/>" : instructs+="";
             (data.results[0].instructions_for_use) ? 
-                instructs += data.results[0].instructions_for_use+"" : instructs+="";
+                instructs += data.results[0].instructions_for_use+"<br/>" : instructs+="";
             (data.results[0].when_using) ? 
-                instructs += data.results[0].when_using+"" : instructs += "";
+                instructs += data.results[0].when_using+"<br/>" : instructs += "";
             (data.results[0].storage_and_handling) ? 
-                instructs += data.results[0].storage_and_handling+"" : instructs += "";
-            $("#instructions").text(instructs);
+                instructs += data.results[0].storage_and_handling+"<br/>" : instructs += "";
+            (instructs === "") ?
+                instructs = "No information found on instructions" : instructs +="";
+            $("#instructions").html("<p>"+instructs+"</p>");
+            
             /* Displaying warnings to the user */
             (data.results[0].warnings) ? 
                 warnings = data.results[0].warnings+"" : warnings = "No information found on warnings";
@@ -66,12 +69,11 @@ $(document).ready(function() {
                 for(var i = 0; i < jso.results.length && i < 10; i++) {
                     var currBrand = fixCasing(jso.results[i].term + "");
                     if (currBrand !== brand || toAdd !== currBrand) {
-                        brands += currBrand + "";
-                        i === 9 || i === (jso.results.length - 1) ? brands += "": brands +=", ";
+                        brands += currBrand + "<br/>";
                     }
                     
                }
-                $("#other_brands").text(brands);
+                $("#other_brands").html(brands);
             });
                       
             $(".heading").show();
@@ -87,13 +89,13 @@ $(document).ready(function() {
             var sideEffect;
             /* Grabbing the side-effects and then following four form the array */
             (data.results[0]) ? 
-                sideEffect = data.results[0].term : sideEffect = "No information found on sideffects";
+                sideEffect = fixCasing(data.results[0].term+"") : sideEffect = "No information found on sideffects";
             
             for(var i = 1; i < data.results.length && i < 5 ; ++i) {
-                sideEffect += ", "+data.results[i].term;
+                sideEffect += "<br/>"+fixCasing(data.results[i].term+"");
             }
             //sideEffect = fixCasing(sideEffect);
-            $("#side_effects").text(sideEffect);
+            $("#side_effects").html(sideEffect);
         });
     }
     /* The two ways for the user to prompt a search : clicking the search button or hitting enter */
