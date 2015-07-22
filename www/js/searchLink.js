@@ -77,6 +77,12 @@ $(document).ready(function() {
             });
                       
             $(".heading").show();
+            if (!document.querySelector('#collapse1').opened) {
+                 document.querySelector('#collapse1').toggle();
+             }
+            if (!document.querySelector('#collapse2').opened) {
+                document.querySelector('#collapse2').toggle();
+            }
 		})
         /* This function will execute will tell the user the drug ins't found when no valid json is returned  */
         .fail(function(){
