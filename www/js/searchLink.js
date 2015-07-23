@@ -20,7 +20,7 @@ $(document).ready(function() {
         
         /* Grabbing data from the JSON on the SPL of the drug */
 		var jqxhr = $.getJSON("https://api.fda.gov/drug/label.json?search=brand_name:"+toAdd, function(data) {
-            var brand, generic, purpose, activeIngredient, warnings, instructs = "";
+            var brand, generic, purpose, activeIngredient, warnings = "", instructs = "";
             
             /* Checking if the information is in the JSON and then displaying it */
             /* Displaying the instructions for the user */
@@ -33,15 +33,21 @@ $(document).ready(function() {
             (data.results[0].when_using) ? 
                 instructs += data.results[0].when_using+"<br/>" : instructs += "";
             (data.results[0].storage_and_handling) ? 
-                instructs += data.results[0].storage_and_handling+"<br/>" : instructs += "";
+                instructs += data.results[0].storage_and_handling+"<br/> " : instructs += "";
             (instructs === "") ?
                 instructs = "No information found on instructions" : instructs +="";
-            $("#instructions").html("<p>"+instructs+"</p>");
+            $("#instructions").html(instructs);
             
             /* Displaying warnings to the user */
             (data.results[0].warnings) ? 
-                warnings = data.results[0].warnings+"" : warnings = "No information found on warnings";
-            $("#warnings").text(warnings);
+                warnings = data.results[0].warnings + "<br/>" : warnings += "";
+            (data.results[0].stop_use) ? 
+                warnings += data.results[0].stop_use + "<br/>" : warnings += "";
+            (data.results[0].keep_out_of_reach_of_children) ? 
+                warnings += data.results[0].keep_out_of_reach_of_children + "<br/>" : warnings += "";
+            (data.results[0].do_not_use) ? 
+                warnings += data.results[0].do_not_use + "<br/>" : warnings += "";
+             $("#warnings").html(warnings);
             /* Getting and dispaying brand name*/
 			(data.results[0].openfda.brand_name) ? 
                 brand = data.results[0].openfda.brand_name + "" : brand = "No information found on brand name.";
