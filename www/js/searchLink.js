@@ -47,6 +47,17 @@ $(document).ready(function() {
                 warnings += data.results[0].keep_out_of_reach_of_children + "<br/>" : warnings += "";
             (data.results[0].do_not_use) ? 
                 warnings += data.results[0].do_not_use + "<br/>" : warnings += "";
+            (data.results[0].ask_doctor) ? 
+                warnings += data.results[0].ask_doctor + "<br/>" : warnings += "";
+            (data.results[0].use_in_specific_populations) ?
+                warnings += data.results[0].use_in_specific_populations + "<br/>" : warnings += "";
+            (data.results[0].pregnancy) ?
+                warnings += data.results[0].pregnancy + "<br/>" : warnings += "";
+            (data.results[0].information_for_patients) ?
+                warnings += data.results[0].information_for_patients + "<br>" : warnings += "";
+            (data.results[0].other_safety_information) ?
+                warnings += data.results[0].other_safety_information + "<br/>" : warnings += "";
+            (warnings === "") ? warnings = "No information found on warnings" : warnings += "";
              $("#warnings").html(warnings);
             /* Getting and dispaying brand name*/
 			(data.results[0].openfda.brand_name) ? 
