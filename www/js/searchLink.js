@@ -13,6 +13,15 @@ $(document).ready(function() {
         }
         return str;
     }
+    
+    var inArray = function(str, arr) {
+        for (var i = 0; i < arr.length; i++) {
+            if(arr[i] == str) {
+                return true;
+            }
+        }
+        return false;
+    }
     /* This function will handle the task of searching information from the openFDA API */
     var searchFDA = function() {
          /* Getting the wanted search term */
@@ -81,12 +90,14 @@ $(document).ready(function() {
             
             $("#active_ingred").text(activeIngredient);
             $.getJSON("https://api.fda.gov/drug/label.json?search=generic_name:"+generic+"&count=openfda.brand_name.exact",function(jso){
-                var brands;
+                var brands, brandArr = new Array(10), arrCount = 0;
                 jso.results[0] ? brands = "" : brands = "No information found on other brands.";              
-                for(var i = 0; i < jso.results.length && i < 10; i++) {
+                for(var i = 0; i < jso.results.length && arrCount < 10; i++) {
                     var currBrand = fixCasing(jso.results[i].term + "");
-                    if (currBrand !== brand || toAdd !== currBrand) {
+                    if ((currBrand !== brand || toAdd !== currBrand) && !inArray(currBrand, brandArr)) {
                         brands += currBrand + "<br/>";
+                        brandArr[arrCount] = currBrand;
+                        arrCount += 1;
                     }
                     
                }
