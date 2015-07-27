@@ -44,7 +44,7 @@ $(document).ready(function() {
             (data.results[0].storage_and_handling) ? 
                 instructs += data.results[0].storage_and_handling+"<br/> " : instructs += "";
             (instructs === "") ?
-                instructs = "No information found on instructions" : instructs +="";
+                instructs = "No information found for instructions" : instructs +="";
             $("#instructions").html(instructs);
             
             /* Displaying warnings to the user */
@@ -66,32 +66,32 @@ $(document).ready(function() {
                 warnings += data.results[0].information_for_patients + "<br>" : warnings += "";
             (data.results[0].other_safety_information) ?
                 warnings += data.results[0].other_safety_information + "<br/>" : warnings += "";
-            (warnings === "") ? warnings = "No information found on warnings" : warnings += "";
+            (warnings === "") ? warnings = "No information found for warnings" : warnings += "";
              $("#warnings").html(warnings);
             /* Getting and dispaying brand name*/
 			(data.results[0].openfda.brand_name) ? 
-                brand = data.results[0].openfda.brand_name + "" : brand = "No information found on brand name.";
+                brand = data.results[0].openfda.brand_name + "" : brand = "No information found for brand name.";
             brand = fixCasing(brand);
             $("#brand_name").text(brand);
             
             /* Getting and displaying generic name */
             (data.results[0].openfda.generic_name) ? 
-                generic = data.results[0].openfda.generic_name + "": generic = "No information found on generic name";
+                generic = data.results[0].openfda.generic_name + "": generic = "No information found for generic name";
 			generic = fixCasing(generic);
             $("#generic_name").text(generic);
             
             /* Getting and displaying purpose */
             (data.results[0].purpose) ? 
-                purpose = data.results[0].purpose + "" : purpose = "No information found on purpose.";
+                purpose = data.results[0].purpose + "" : purpose = "No information found for purpose.";
             $("#purpose").text(purpose);
             /* Grabbing and displaying the information for active ingredients */
             (data.results[0].active_ingredient) ? 
-                activeIngredient = data.results[0].active_ingredient : activeIngredient = "No information found on active ingredients.";
+                activeIngredient = data.results[0].active_ingredient : activeIngredient = "No information found for active ingredients.";
             
             $("#active_ingred").text(activeIngredient);
             $.getJSON("https://api.fda.gov/drug/label.json?search=generic_name:"+generic+"&count=openfda.brand_name.exact",function(jso){
                 var brands, brandArr = new Array(10), arrCount = 0;
-                jso.results[0] ? brands = "" : brands = "No information found on other brands.";              
+                jso.results[0] ? brands = "" : brands = "No information found for other brands.";              
                 for(var i = 0; i < jso.results.length && arrCount < 10; i++) {
                     var currBrand = fixCasing(jso.results[i].term + "");
                     if ((currBrand !== brand || toAdd !== currBrand) && !inArray(currBrand, brandArr)) {
@@ -123,7 +123,7 @@ $(document).ready(function() {
             var sideEffect;
             /* Grabbing the side-effects and then following four form the array */
             (data.results[0]) ? 
-                sideEffect = fixCasing(data.results[0].term+"") : sideEffect = "No information found on sideffects";
+                sideEffect = fixCasing(data.results[0].term+"") : sideEffect = "No information found for side-effects";
             
             for(var i = 1; i < data.results.length && i < 5 ; ++i) {
                 sideEffect += "<br/>"+fixCasing(data.results[i].term+"");
