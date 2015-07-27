@@ -81,7 +81,10 @@ function enableBtn(){
         var ingredient = document.getElementById("active_ingred").innerHTML;
             
         var altBrand = document.getElementById("other_brands").innerHTML;
-             
+        
+        var warnings = document.getElementById("warnings").innerHTML;
+            
+        var instructs = document.getElementById("instructions").innerHTML;
         //Simple Validation
         if(id == ''){
             alert('drug name is required');
@@ -103,7 +106,7 @@ function enableBtn(){
             //loop to make sure we have the correct drug name to delete
         for(var i=0; i < drugList.length; i++){
             if(drugList[i].id == id){
-               alert('drug name is already save');
+               alert(id+" is already saved in your list.");
                 e.preventDefault();
                 return;
             }
@@ -118,7 +121,9 @@ function enableBtn(){
                 "reason": purpose,
                 "effects": effects,
                 "active": ingredient,
-                "altBrand": altBrand
+                "altBrand": altBrand,
+                "warnings":warnings,
+                "instructions":instructs
             } 
             
             //add "new_drug" object of drug list array
