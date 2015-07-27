@@ -71,7 +71,7 @@ $(document).ready(function(){
         var i = 0;
         //check drugs 
         if(specific_drug != null) {
-                $("#fieldText").text(specific_drug.effects);     
+                $("#fieldText").html(specific_drug.effects);     
             }
         }
  
@@ -113,7 +113,7 @@ $(document).ready(function(){
         var i = 0;
         //check drugs 
         if(specific_drug != null) {
-                $("#fieldText").text(specific_drug.altBrand);     
+                $("#fieldText").html(specific_drug.altBrand);     
             }
         }
     

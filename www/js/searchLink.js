@@ -63,7 +63,7 @@ $(document).ready(function() {
             (data.results[0].pregnancy) ?
                 warnings += data.results[0].pregnancy + "<br/>" : warnings += "";
             (data.results[0].information_for_patients) ?
-                warnings += data.results[0].information_for_patients + "<br>" : warnings += "";
+                warnings += data.results[0].information_for_patients + "<br/>" : warnings += "";
             (data.results[0].other_safety_information) ?
                 warnings += data.results[0].other_safety_information + "<br/>" : warnings += "";
             (warnings === "") ? warnings = "No information found for warnings" : warnings += "";
