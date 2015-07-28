@@ -122,12 +122,6 @@
                 margin-left:1%;
                 margin-top: 20px;
             }
-            paper-fab {
-                    position:fixed;
-                    bottom:3%;
-                    right: 3%;
-                background-color:#FFC107; /* yellow collor*/
-                }
 
              .custom /deep/ ::-webkit-input-placeholder {
                     color: #FFECB3;                
@@ -150,9 +144,21 @@
             .carrot{
                 float:right;
             }
-         paper-input {
-        width: 100%;
-      }
+        
+            #saveText{
+                position:fixed;
+                bottom:0%;
+                right:3%;
+            }
+            paper-fab {
+                    position:fixed;
+                    bottom:5%;
+                    right: 3%;
+                background-color:#FFC107; /* yellow collor*/
+                }
+            paper-input {
+                width: 100%;
+            }
     </style>
         
  
@@ -244,8 +250,13 @@
         </core-header-panel>
        
 
-        <div>
-            <paper-fab id="saveBtn" icon="save" disabled></paper-fab></div>
+        <div id="button3">
+            <paper-fab id="saveBtn" icon="save" disabled></paper-fab>
+             <div id="saveText">
+                <p>Save</p>
+            </div>
+        </div>
+       
         
         
         <paper-toast id="errortoast" text="Error. Invalid Input"></paper-toast>
