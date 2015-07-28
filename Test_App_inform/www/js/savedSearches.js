@@ -119,6 +119,17 @@ function enableBtn(){
                 "effects": effects,
                 "active": ingredient,
                 "altBrand": altBrand
+            }
+            
+             //New drug object for cloud database table
+            var drug_item = {
+                "id" : id,
+                "brand" : brandNm,
+                "generic": genericNm,
+                "reason": purpose,
+                "effects": effects,
+                "active": ingredient,
+                "altBrand": altBrand
             } 
             
             //add "new_drug" object of drug list array
@@ -126,6 +137,9 @@ function enableBtn(){
             
             //set the item to local storage
             localStorage.setItem('drugs', JSON.stringify(drugs));
+            
+             //set the item to local storage
+            localStorage.setItem('drug_item', JSON.stringify(drug_item));
             
             
             console.log('Drug Added');

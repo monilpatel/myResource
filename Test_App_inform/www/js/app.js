@@ -1,41 +1,9 @@
 window.app = {};
 
-/*function displayDrugs(){
-
-        //get drugs
-        var drugList = JSON.parse(localStorage.getItem('drugs'));
-        //sort drugs by name
-        if(drugList != null){
-            drugList = drugList.sort(sortByName); 
-        }
-        
-        
-        //set counter
-        var i = 0;
-        //check drugs 
-        if(drugList != null) {
-            //loop through array and display
-            $.each(drugList, function(key, value){
-                $("#drug_table").append('<tr bordor="0" id= "' + value.id + '">'+ 
-                '<td>' + value.id + '</td>' + 
-               /* '<td><a href="#" id="remove_drug" data-id="'+ value.id +'">Clear</a> | <a href="infoPage.html?id="'+ value.id +'" id="more_info" data-id="'+ value.id +'">View Info</a></td>' +
-                '</tr>');
-                                        
-                '<td><a href="#" id="remove_drug" data-id="'+ value.id +'"><core-icon id="delete" icon="delete"></core-icon></a>  <a href="infoPage.html?id="'+ value.id +'" id="more_info" data-id="'+ value.id +'"><core-icon id="moreInfo" icon="info"></core-icon></a></td>' +
-                '</tr>');
-                
-              //  alert(value.brand);
-                
-            })
-    
-        }
-        //document.getElementById("saveBtn").disabled = true;
-        console.log('display drug');
-}*/
-
-$(document).ready(function() {    
-    $('#addDrug').click(function (e) {
+$(document).ready(function () {    
+    $('#saveBtn').click(function(e) {
         createRecord();
+        window.location.reload();
     });
 
    function checkEnterKey(e, action) {
@@ -78,7 +46,6 @@ function checkSession() {
 // main app entry point
 
 function runApp() {
-
     // your app starts here
     getRecords();
 }
@@ -95,17 +62,18 @@ function getRecords() {
 
 function createRecord() {
     //get drugs
-    var drugList = JSON.parse(localStorage.getItem('drugs'));
+    var drug = JSON.parse(localStorage.getItem('drug_item'));
     var name;
-            
-    for(var i=0; i < drugList.length; i++){
-        name = drugList[i].id;
+    // alert(name);      
+    
+    name = drug.id;
     alert(name);
     //var name = $('#searchValue').val();
     //alert(name);
     if (name === '') return;
     var item = {"record":[
         {"name":name, "complete":false}
+        
     ]};
     df.apis.db.createRecords({"table_name":"list", "body":item}, function (response) {
        // $('#searchValue').val('');
@@ -113,7 +81,7 @@ function createRecord() {
     }
     , crudError
     );
-    }
+    
 }
 
 
@@ -143,11 +111,11 @@ console.log("entered delete method");
 
 function buildItemList(json) {
 
-    var html = '';
     if (json.record) {
         json.record.forEach(function (entry) {
             var name = entry.name;
             var id = entry.id;
+           
                  //alert(id);
             $('#drug_tab').append('<tr bordor="0" data-id= "' + id + '">'+'<td>' + name + '</td>' +'<td><a data-id="' + id + '" id="del" ><core-icon icon="delete" id="delBtn"></core-icon</a><a href="infoPage.html?id="'+ id +'" id="more_info" data-id="'+ id +'"><core-icon id="moreInfo" icon="info"></core-icon></a></td>' +
                 '</tr>');
@@ -185,6 +153,7 @@ function buildItemList(json) {
         deleteRecord(id);
         
     });
+
    
 }
 
