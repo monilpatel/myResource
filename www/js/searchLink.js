@@ -30,6 +30,7 @@ $(document).ready(function() {
         /* Grabbing data from the JSON on the SPL of the drug */
 		var jqxhr = $.getJSON("https://api.fda.gov/drug/label.json?search=brand_name:"+toAdd, function(data) {
             var brand, generic, purpose, activeIngredient, warnings = "", instructs = "";
+            var brands = "No information for other brands", brandArr = new Array(10), arrCount = 0;
             
             /* Checking if the information is in the JSON and then displaying it */
             /* Displaying the instructions for the user */
@@ -90,8 +91,10 @@ $(document).ready(function() {
             
             $("#active_ingred").text(activeIngredient);
             $.getJSON("https://api.fda.gov/drug/label.json?search=generic_name:"+generic+"&count=openfda.brand_name.exact",function(jso){
-                var brands, brandArr = new Array(10), arrCount = 0;
-                jso.results[0] ? brands = "" : brands = "No information found for other brands.";              
+                
+                if(jso.results[0]) {
+                    brands = "";
+                }
                 for(var i = 0; i < jso.results.length && arrCount < 10; i++) {
                     var currBrand = fixCasing(jso.results[i].term + "");
                     if ((currBrand !== brand || toAdd !== currBrand) && !inArray(currBrand, brandArr)) {
@@ -101,9 +104,9 @@ $(document).ready(function() {
                     }
                     
                }
-                $("#other_brands").html(brands);
+                
             });
-                      
+            $("#other_brands").html(brands);
             $(".heading").show();
             if (!document.querySelector('#collapse1').opened) {
                  document.querySelector('#collapse1').toggle();
