@@ -5,10 +5,13 @@ window.onload = function () {
         var apiReady = document.createEvent("Event");
         apiReady.initEvent("apiReady", true, false);
     }
-    //replace this dsp_url with yours ( leave the /rest/api_docs part )
-    var dsp_url = "http://dsp-ebony-m-cross-51446.cloud.dreamfactory.com/rest/api_docs";
+    // if app files hosted on DSP then use location.host
+  var dsp_url = "http://dsp-ebony-m-cross-51446.cloud.dreamfactory.com/rest/api_docs";
+    // if app files not hosted on DSP then replace this dsp_url with yours ( leave the /rest/api_docs part )
+    //var dsp_url = "https://_your_dsp_hostname_here_/rest/api_docs";
+
     //replace this app_name with yours
-    var app_name = "inform";
+    var app_name = "todojquery";
 
     //These are are necessary to communicate with the DreamFactory API
     window.authorizations.add("X-DreamFactory-Application-Name", new ApiKeyAuthorization("X-DreamFactory-Application-Name", app_name, "header"));

@@ -1,12 +1,12 @@
 window.app = {};
 
-$(document).ready(function () {    
-    $('#saveBtn').click(function(e) {
+$(document).ready(function() {
+
+    $('#additem').click(function (e) {
         createRecord();
-        window.location.reload();
     });
 
-   function checkEnterKey(e, action) {
+    function checkEnterKey(e, action) {
         if (e.keyCode == 13) {
             action();
         }
@@ -15,9 +15,10 @@ $(document).ready(function () {
     $('#loginDialog').find('input').keydown(function(e) {
         checkEnterKey(e, logIn);
     });
-//});
+});
 
 $(window).on("apiReady", function () {
+
     checkSession();
 });
 
@@ -28,24 +29,24 @@ function checkSession() {
     $("#loading").show();
     // check for existing session, relevant when code is hosted on the dsp
     window.df.apis.user.getSession({"body":{}}, function (response) {
-            runApp();
         $("#loading").hide();
         // existing session found, assign session token
         // to be used for the session duration
         var session = new ApiKeyAuthorization("X-Dreamfactory-Session-Token",
             response.session_id, 'header');
         window.authorizations.add("X-DreamFactory-Session-Token", session);
-    
+        runApp();
     }, function (response) {
         $("#loading").hide();
         // no valid session, try to log in
         doLogInDialog();
     });
-} 
+}
 
 // main app entry point
 
 function runApp() {
+
     // your app starts here
     getRecords();
 }
@@ -61,30 +62,18 @@ function getRecords() {
 }
 
 function createRecord() {
-    //get drugs
-    var drug = JSON.parse(localStorage.getItem('drug_item'));
-    var name;
-    // alert(name);      
-    
-    name = drug.id;
-    alert(name);
-    //var name = $('#searchValue').val();
-    //alert(name);
+
+    var name = $('#itemname').val();
     if (name === '') return;
     var item = {"record":[
         {"name":name, "complete":false}
-        
     ]};
     df.apis.db.createRecords({"table_name":"list", "body":item}, function (response) {
-       // $('#searchValue').val('');
+        $('#itemname').val('');
         getRecords();
-    }
-    , crudError
+    }, crudError
     );
-    
 }
-
-
 
 function updateRecord(id, complete) {
 
@@ -98,63 +87,42 @@ function updateRecord(id, complete) {
 }
 
 function deleteRecord(id) {
-console.log("entered delete method");
+
     df.apis.db.deleteRecords({"table_name":"list", "ids":id}, function (response) {
-       location.reload();
-        //getRecords();
+        getRecords();
     }, crudError
     );
 }
-    
-    
+
 // ui
 
 function buildItemList(json) {
 
+    var html = '';
     if (json.record) {
         json.record.forEach(function (entry) {
             var name = entry.name;
             var id = entry.id;
-           
-                 //alert(id);
-            $('#drug_tab').append('<tr bordor="0" data-id= "' + id + '">'+'<td>' + name + '</td>' +'<td><a data-id="' + id + '" id="del" ><core-icon icon="delete" id="delBtn"></core-icon</a><a href="infoPage.html?id="'+ id +'" id="more_info" data-id="'+ id +'"><core-icon id="moreInfo" icon="info"></core-icon></a></td>' +
-                '</tr>');
-            
-           
-            
-            
-            
-            
-           /* html += '<tr>';
+            html += '<tr>';
             html += '<td><a><i class="icon icon-minus-sign" data-id="' + id + '"></i></a></td>';
             if (entry.complete === true) {
                 html += '<td style="width:100%" class="item strike" data-id="' + id + '">' + name + '</td>';
             } else {
                 html += '<td style="width:100%" class="item" data-id="' + id + '">' + name + '</td>';
             }
-            html += '</tr>';*/
+            html += '</tr>';
         });
     }
-
-    //$('table').html(html);
-   $('#list-container .item').click(function (e) {
+    $('table').html(html);
+    $('#list-container .item').click(function (e) {
         var id = $(this).data('id');
         var complete = $(this).hasClass('strike');
         updateRecord(id, !complete);
     });
-    
-        
-     $('#drug_tab').on('click','#del', function(e){
+    $('#list-container i').click(function (e) {
         var id = $(this).data('id');
-          
-        alert(id);
-        alert(name);
-        console.log("clicked delete icon");
         deleteRecord(id);
-        
     });
-
-   
 }
 
 // error utils
@@ -222,7 +190,3 @@ function logIn() {
         $("#loginErrorMessage").addClass('alert-error').html(getErrorString(response));
     });
 }
-
-
-    
-});
