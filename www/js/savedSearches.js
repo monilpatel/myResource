@@ -1,7 +1,8 @@
 var checkBtn = false;
 
 function enableBtn(){
-    if(checkBtn == true){   document.getElementById("saveBtn").disabled = false;
+    if(checkBtn == true){   
+        document.getElementById("saveBtn").disabled = false;
     }
 }
 
