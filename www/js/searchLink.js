@@ -28,9 +28,8 @@ $(document).ready(function() {
     	var toAdd = $("#searchValue").val();
         
         /* Grabbing data from the JSON on the SPL of the drug */
-		var jqxhr = $.getJSON("https://api.fda.gov/drug/label.json?search=brand_name:"+toAdd, function(data) {
+		$.getJSON("https://api.fda.gov/drug/label.json?search=brand_name:"+toAdd, function(data) {
             var brand, generic, purpose, activeIngredient, warnings = "", instructs = "";
-            var brands = "No information for other brands", brandArr = new Array(10), arrCount = 0;
             
             /* Checking if the information is in the JSON and then displaying it */
             /* Displaying the instructions for the user */
@@ -90,8 +89,18 @@ $(document).ready(function() {
                 activeIngredient = data.results[0].active_ingredient : activeIngredient = "No information found for active ingredients.";
             
             $("#active_ingred").text(activeIngredient);
+            
+            $(".heading").show();
+            if (!document.querySelector('#collapse1').opened) {
+                 document.querySelector('#collapse1').toggle();
+             }
+            if (!document.querySelector('#collapse2').opened) {
+                document.querySelector('#collapse2').toggle();
+            }
+            
             $.getJSON("https://api.fda.gov/drug/label.json?search=generic_name:"+generic+"&count=openfda.brand_name.exact",function(jso){
-                
+                var brands = "No information for other brands", brandArr = new Array(10), arrCount = 0;
+                console.log("Searching for Brands");
                 if(jso.results[0]) {
                     brands = "";
                 }
@@ -101,24 +110,21 @@ $(document).ready(function() {
                         brands += currBrand + "<br/>";
                         brandArr[arrCount] = currBrand;
                         arrCount += 1;
-                    }
-                    
+                    }   
                }
                 
+                $("#other_brands").html(brands);
+            })
+            .fail(function(){
+                $("#other_brands").html("No information for other brands.");
             });
-            $("#other_brands").html(brands);
-            $(".heading").show();
-            if (!document.querySelector('#collapse1').opened) {
-                 document.querySelector('#collapse1').toggle();
-             }
-            if (!document.querySelector('#collapse2').opened) {
-                document.querySelector('#collapse2').toggle();
-            }
+            
 		})
         /* This function will execute will tell the user the drug ins't found when no valid json is returned  */
         .fail(function(){
             document.querySelector('#errortoast').show();
         });
+        
         
         /* Third JSON request to get every single side effect and ranked by reported occurences with their reported counts */
         $.getJSON("https://api.fda.gov/drug/event.json?search=brand_name:"+ toAdd +"&count=patient.reaction.reactionmeddrapt.exact", 
