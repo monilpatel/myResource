@@ -20,7 +20,7 @@
 $('#drug_table').on('click','#remove_drug', function(e){
     key = $(this).data('id');
     console.log("drug from list");
-    alert(key);
+    //alert(key);
     //id equal to attribute in clear link
     removeDrug(key);
     console.log("removing drug from list"); 
