@@ -15,6 +15,8 @@ var exec = require("cordova/exec");
  * @returns {BarcodeScanner}
  */
 function BarcodeScanner() {
+    console.log("Hello");
+    alert("test");
 
     /**
      * Encoding constants.

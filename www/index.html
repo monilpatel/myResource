@@ -31,6 +31,8 @@
         <script src='lib/swagger.js' type='text/javascript'></script>
         <script src='lib/sdk-init.js' type='text/javascript'></script>
         <script src='app.js' type='text/javascript'></script>
+        <script src='plugins/phonegap-plugin-barcodescanner/www/barcodescanner.js' type='text/javascript'></script>
+
         
     
         <style>   
@@ -228,8 +230,7 @@
                     
                
                    <button type="button" class="btn btn-default btn-sm">
-                    <span class="glyphicon glyphicon-barcode"></span> Barcode
-                    </button> 
+                   <span class="glyphicon glyphicon-barcode" onclick="BarcodeScanner()"></span> Barcode </button> 
                 </div>
                 
                 
