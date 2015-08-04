@@ -156,10 +156,7 @@
             a{
                 color:black;
             }
-            #extra{
-                margin-right: 10%;
-                margin-left: 10%;
-            }
+            
             
             #delete{
                 color:#009688;
@@ -195,6 +192,20 @@
                 width: 2em;
             }
             
+            .footer {
+                
+            }
+            #clearBtn{
+                height: 5%;
+                width:100%;
+            }
+            #formBtn {
+                height: 5%;
+                width: 100%;
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+            }
 /*
             @media only screen and (max-device-width: 480px) {
                 #clearBtn{
@@ -242,7 +253,8 @@
                         <th>My Saved Drugs</th>
                         <th id="table_text">Action</th>    
                     </tr>      
-                    </table></div>               
+                    </table>
+                    </div>               
                
                    <button type="button" class="btn btn-default btn-sm" id="barcodescanner">
                    <span class="glyphicon glyphicon-barcode" ></span> Barcode </button> 
@@ -257,8 +269,9 @@
                 <a href="#" id="clear_drugs" ><paper-button id="clearBtn">Clear all saved drugs</paper-button></a>
                     <a href="http://www.fda.gov/Safety/MedWatch/HowToReport/default.htm"><paper-button id="formBtn"> Report an adverse event</paper-button></a>
 -->
-                    <div id="clearBtn"><a href="#" id="clear_drugs" >Clear all saved drugs</a></div>
-                    <div id="formBtn"><a href="http://www.fda.gov/Safety/MedWatch/HowToReport/default.htm"> Report an adverse event</a></div>
+                    
+                    <paper-button id="clearBtn"><a href="#" id="clear_drugs" >Clear all saved drugs</a></paper-button>
+                    <paper-button id="formBtn"><a href="http://www.fda.gov/Safety/MedWatch/HowToReport/default.htm"> Report an adverse event</a></paper-button>
                     
                 </div>
                 </div>     
