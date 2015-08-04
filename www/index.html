@@ -46,6 +46,9 @@
             
             
             html, body{
+                height: 100%;
+                margin: 0;
+                padding: 0;
                 font-family:'Roboto', sans-serif;
                 -webkit-tap-highlight-color:rgba(0,0,0,0);
             }
@@ -57,6 +60,7 @@
               }
             #table{
                 padding: 0px;
+                position: relative;
             
             }
               #core_header_panel {
@@ -77,21 +81,11 @@
                 background-color: #009688; /*teal color */
                 
               }
-            .footer {
-                position:fixed;
-                bottom:0px;
-                width:100%;
-                height:50px;
-                padding-left: 1%;
-               
-                background-color: #E0E0E0; /*teal color */
-                
-              }
-            
             #main_section {
                   height: 100%;
                   background-color: #FAFAFA;
                   width:100%;
+/*                 padding: 2%;*/
             }
             td {
                 padding: 0px
@@ -107,10 +101,6 @@
                 color:white;
             }
             #tap {float: bottom; } 
-            
-            #main_section{
-                padding: 2%;
-            }
             
             h2.My List {
                 font-family: freight-sans-pro, sans-serif;
@@ -143,24 +133,6 @@
 
             }
             
-            #clearBtn{
-                text-align: center;            
-                color:black;
-            }     
-            
-            #formBtn{               
-                color:black;
-                text-align:center;
-            }
-            
-            a{
-                color:black;
-            }
-            #extra{
-                margin-right: 10%;
-                margin-left: 10%;
-            }
-            
             #delete{
                 color:#009688;
                 float:right;
@@ -180,10 +152,6 @@
             #table_text{
                 float: right;
             }
-            
-            #drug_t{   
-                width: 100%;
-            }
             #moreInfo {
                 height: 2em;
                 width: 2em;
@@ -194,6 +162,26 @@
                 height: 2em;
                 width: 2em;
             }
+            
+             #footer {
+                position:fixed;
+                bottom:0px;
+                width:100%;
+                height:50px;
+/*                padding-left: 1%;               */
+                background-color: #E0E0E0; /*teal color */
+                
+              }
+             .footBtn{
+              line-height: 15px;
+            font-size: 12px;                  
+            height: 40px;
+            text-align: center;
+            background-color: #c7c7c7;
+            color:black;
+            
+        }
+        
             
 /*
             @media only screen and (max-device-width: 480px) {
@@ -214,16 +202,32 @@
                 
             }
 */
+            @media only screen and (max-device-width:480px){
+                
+                .core-header {
+                height:60px;
+                line-height: 60px;
+                padding-left: 3%;
+                padding-top:1px;
+                background-color: #009688; /*teal color */
+                
+              }
+                }
             </style>
     </head>
-        <body><div id="loading" class="hide"><i class="icon-spinner icon-spin icon-4x"></i></div>
+        <body>
+            <div id="loading" class="hide"><i class="icon-spinner icon-spin icon-4x"></i></div>
     
             <core-header-panel mode="standard" id="core_header_panel">
                 <div class="core-header">
-                <div id="div" flex><img src="img/InformedAmber2.svg"><a href= "searchPage.html" id="searchBtn"><paper-icon-button id="searchBtn" icon="search"></paper-icon-button></a> 
-</div>
+                    <div id="div" flex>
+                        <img src="img/InformedAmber2.svg">
+                            <a href= "searchPage.html" id="searchBtn">
+                                <paper-icon-button id="searchBtn" icon="search"></paper-icon-button>
+                        </a> 
+                    </div>
                 </div>                    
-                <div class="container" id="main_section" data-role="main">
+<!--                <div class="container" id="main_section" data-role="main" style="background-color:red">-->
                     
                     
 <!--
@@ -237,32 +241,30 @@
 -->
 <!--                <h2 class="list_text">My List</h2>-->
                 <div id="drug_t">   
-                <table class="table table-striped table-hover table-responsive" id="drug_table">
-                    <tr id= "tableHeader">
-                        <th>My Saved Drugs</th>
-                        <th id="table_text">Action</th>    
-                    </tr>      
-                    </table></div>               
+                    <table class="table table-striped table-hover table-responsive" id="drug_table">
+                        <tr id= "tableHeader">
+                            <th>My Saved Drugs</th>
+                            <th id="table_text">Action</th>    
+                        </tr>      
+                    </table>
+                </div>               
                
-                   <button type="button" class="btn btn-default btn-sm" id="barcodescanner">
-                   <span class="glyphicon glyphicon-barcode" ></span> Barcode </button> 
+                <button type="button" class="btn btn-default btn-sm" id="barcodescanner">
+                <span class="glyphicon glyphicon-barcode" ></span> Barcode </button> 
                    
-                </div>
+<!--                </div>-->
                 
-                          
-            <div class="footer">
-                <div id="extra">
-                
-<!--
+ <!--
                 <a href="#" id="clear_drugs" ><paper-button id="clearBtn">Clear all saved drugs</paper-button></a>
                     <a href="http://www.fda.gov/Safety/MedWatch/HowToReport/default.htm"><paper-button id="formBtn"> Report an adverse event</paper-button></a>
--->
-                    <div id="clearBtn"><a href="#" id="clear_drugs" >Clear all saved drugs</a></div>
-                    <div id="formBtn"><a href="http://www.fda.gov/Safety/MedWatch/HowToReport/default.htm"> Report an adverse event</a></div>
-                    
-                </div>
-                </div>     
+-->               
+
             </core-header-panel>            
-            
         </body>
+
+        <div id="footer" horizontal layout center>
+            <a href="#" id="clear_drugs" class="footBtn" flex ><paper-button >Clear All</paper-button></a>
+            <a href="http://www.fda.gov/Safety/MedWatch/HowToReport/default.htm" class="footBtn" flex><paper-button >Report Adverse Event</paper-button></a>
+
+        </div>   
 </html>
