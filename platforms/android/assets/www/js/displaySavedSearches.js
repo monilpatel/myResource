@@ -1,5 +1,27 @@
  $(document).ready(function() {
-          
+     
+     $('#barcodescanner').click(function(){
+       window.alert("ButtonClicked");
+       cordova.plugins.barcodeScanner.scan(
+       function (result) {
+          alert("We got a barcode\n" +
+                "Result: " + result.text + "\n" +
+                "Format: " + result.format + "\n" +
+                "Cancelled: " + result.cancelled);
+      }, 
+      function (error) {
+          alert("Scanning failed: " + error);
+      }
+   );
+         
+    });
+ 
+    $('#saveBtn').click(function(e){
+        addDrug(e);
+        document.querySelector('#savetoast').show();
+    });
+     
+    
     $(document).keypress(function(e) {
         if (e.which === 13) {
             enableBtn();
@@ -15,7 +37,7 @@
 $('#drug_table').on('click','#remove_drug', function(e){
     key = $(this).data('id');
     console.log("drug from list");
-    alert(key);
+    //alert(key);
     //id equal to attribute in clear link
     removeDrug(key);
     console.log("removing drug from list"); 
@@ -40,11 +62,9 @@ $('#drug_table').on('click','#remove_drug', function(e){
      
       displayDrugs();
      
-     
-         
+       
     
     function moreInfo(id){
-        if(confirm('You want to receive more info?')){
          var drugList = JSON.parse(localStorage.getItem('drugs')); 
         var specific_drug;
         
@@ -60,5 +80,5 @@ $('#drug_table').on('click','#remove_drug', function(e){
         console.log('drug is now specified');
        
     }
-}
+
 });

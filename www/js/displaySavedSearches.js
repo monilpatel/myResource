@@ -1,4 +1,21 @@
  $(document).ready(function() {
+     
+     $('#barcodescanner').click(function(){
+       window.alert("ButtonClicked");
+       cordova.plugins.barcodeScanner.scan(
+       function (result) {
+          alert("We got a barcode\n" +
+                "Result: " + result.text + "\n" +
+                "Format: " + result.format + "\n" +
+                "Cancelled: " + result.cancelled);
+      }, 
+      function (error) {
+          alert("Scanning failed: " + error);
+      }
+   );
+         
+    });
+ 
     $('#saveBtn').click(function(e){
         addDrug(e);
         document.querySelector('#savetoast').show();

@@ -1,122 +1,26 @@
-$(document).ready(function(){
-   display();
+$(document).ready(function() {
+    var specific_drug = JSON.parse(localStorage.getItem('drug'));
+    $("#title").text(specific_drug.id);
     
+    $("#side_effects").html(specific_drug.effects);
     
-    $("core-item[label='Warning']").click(function(){
-        $("#field").text("Warnings");
-         //displayWarning();
-        $("#fieldText").text("This text is just a placeholder for actual warnings.");
-    });
-    $("core-item[label='Side Effects']").click(function() {
-        $("#field").text("Side Effects");
-        displayEffects();
-    });
-    
-    $("core-item[label='Purpose']").click(function() {
-        $("#field").text("Purpose");
-        displayPurpose();
-    });
-    
-    $("core-item[label='Active Ingredients']").click(function() {
-        $("#field").text("Active Ingredients");
-        displayIngredient();
-    });
-    
-    $("core-item[label='Other Brands']").click(function() {
-        $("#field").text("Other Brands");
-        displayBrands();
-    });
-    
-    
-    //
-    function display(){
-        //get drug
-     var specific_drug = JSON.parse(localStorage.getItem('drug'));
-        
-        //set counter
-        var i = 0;
-        //check drugs 
-        if(specific_drug != null) {
-                $("#field").text(specific_drug.id);     
-            }
-        }
-    
- //function to display drug list
- /*function displayWarning(){
-     console.log("entering displayWarning()");
+    $("#purpose").text(specific_drug.reason);
 
-        //get drug
-     var specific_drug = JSON.parse(localStorage.getItem('drug'));
-        
-        //set counter
-        var i = 0;
-        //check drugs 
-        if(specific_drug != null) {
-            //loop through array and display
-            $.each(specific_drug, function(key, value){
-                $("#fieldText").text(specific_drug.);     
-            });
+    $("#brand_name").text(specific_drug.brand);
     
-        }
- }*/
+    $("#active_ingred").text(specific_drug.active);
     
+    $("#other_brands").html(specific_drug.altBrand);
     
-//function to display drug side effects
- function displayEffects(){
-     console.log("entering displayEffects()");
-    //get drug
-     var specific_drug = JSON.parse(localStorage.getItem('drug'));
-        
-        //set counter
-        var i = 0;
-        //check drugs 
-        if(specific_drug != null) {
-                $("#fieldText").text(specific_drug.effects);     
-            }
-        }
- 
-    //function to display drug purpose
- function displayPurpose(){
-     console.log("entering displayPurpose()");
-    //get drug
-     var specific_drug = JSON.parse(localStorage.getItem('drug'));
-        
-        //set counter
-        var i = 0;
-        //check drugs 
-        if(specific_drug != null) {
-                $("#fieldText").text(specific_drug.reason);     
-            }
-        }
+    $("#generic_name").text(specific_drug.generic);
     
-    //function to display drug active ingredient
- function displayIngredient(){
-     console.log("entering displayIngredient()");
-    //get drug
-     var specific_drug = JSON.parse(localStorage.getItem('drug'));
-        
-        //set counter
-        var i = 0;
-        //check drugs 
-        if(specific_drug != null) {
-                $("#fieldText").text(specific_drug.active);     
-            }
-        }
+    $("#warnings").html(specific_drug.warnings);
     
-    //function to display drug alternative brands
- function displayBrands(){
-     console.log("entering displayBrands()");
-    //get drug
-     var specific_drug = JSON.parse(localStorage.getItem('drug'));
-        
-        //set counter
-        var i = 0;
-        //check drugs 
-        if(specific_drug != null) {
-                $("#fieldText").text(specific_drug.altBrand);     
-            }
-        }
+    $("#instructions").html(specific_drug.instructions);
     
+    document.querySelector('#collapse1').toggle();
+    
+    document.querySelector('#collapse2').toggle()
 });
 
 

@@ -1,11 +1,14 @@
+var checkBtn = false;
 
 function enableBtn(){
-     document.getElementById("saveBtn").disabled = false;
+    if(checkBtn == true){   
+        document.getElementById("saveBtn").disabled = false;
+    }
 }
 
-function savedSearches(){
+/*function savedSearches(){
         addDrug();  
- }
+ }*/
  
         
  //function to display drug list
@@ -25,9 +28,12 @@ function savedSearches(){
         if(drugList != null) {
             //loop through array and display
             $.each(drugList, function(key, value){
-                $("#drug_table").append('<tr id= "' + value.id + '">'+ 
+                $("#drug_table").append('<tr bordor="0" id= "' + value.id + '">'+ 
                 '<td>' + value.id + '</td>' + 
-                '<td><a href="#" id="remove_drug" data-id="'+ value.id +'">Clear</a> | <a href="infoPage.html?id="'+ value.id +'" id="more_info" data-id="'+ value.id +'">View Info</a></td>' +
+               /* '<td><a href="#" id="remove_drug" data-id="'+ value.id +'">Clear</a> | <a href="infoPage.html?id="'+ value.id +'" id="more_info" data-id="'+ value.id +'">View Info</a></td>' +
+                '</tr>');*/
+                                        
+                '<td><a href="#" id="remove_drug" data-id="'+ value.id +'"><core-icon id="delete" icon="delete"></core-icon></a>  <a href="infoPage.html?id="'+ value.id +'" id="more_info" data-id="'+ value.id +'"> <core-icon id="moreInfo" icon="info"></core-icon></a></td>' +
                 '</tr>');
                 
               //  alert(value.brand);
@@ -35,8 +41,7 @@ function savedSearches(){
             })
     
         }
-        document.getElementById("saveBtn").disabled = true;
-        document.getElementById("saveBtn").addEventListener("click", addDrug);
+        //document.getElementById("saveBtn").disabled = true;
         console.log('display drug'); 
     }
                                  
@@ -60,9 +65,11 @@ function savedSearches(){
 
     //Function to add a drug save
     function addDrug(e){
+        if(checkBtn == true){
         
         //Add unique ID using drug name
         var id = $("#searchValue").val();
+        id = id.charAt(0).toUpperCase() + id.substr(1).toLowerCase();
       
         var brandNm = document.getElementById("brand_name").innerHTML;
         
@@ -75,7 +82,10 @@ function savedSearches(){
         var ingredient = document.getElementById("active_ingred").innerHTML;
             
         var altBrand = document.getElementById("other_brands").innerHTML;
-             
+        
+        var warnings = document.getElementById("warnings").innerHTML;
+            
+        var instructs = document.getElementById("instructions").innerHTML;
         //Simple Validation
         if(id == ''){
             alert('drug name is required');
@@ -97,7 +107,7 @@ function savedSearches(){
             //loop to make sure we have the correct drug name to delete
         for(var i=0; i < drugList.length; i++){
             if(drugList[i].id == id){
-               alert('drug name is already save');
+               alert(id+" is already saved in your list.");
                 e.preventDefault();
                 return;
             }
@@ -112,7 +122,9 @@ function savedSearches(){
                 "reason": purpose,
                 "effects": effects,
                 "active": ingredient,
-                "altBrand": altBrand
+                "altBrand": altBrand,
+                "warnings":warnings,
+                "instructions":instructs
             } 
             
             //add "new_drug" object of drug list array
@@ -127,10 +139,10 @@ function savedSearches(){
             document.getElementById("saveBtn").disabled = true;
          
             console.log("save button disabled");                
-                    
+            checkBtn = false;    
         }
     }
-
+    }
 
     //Function to remove drug
     function removeDrug(id){
