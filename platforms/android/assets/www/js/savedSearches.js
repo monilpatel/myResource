@@ -140,6 +140,7 @@ function enableBtn(){
          
             console.log("save button disabled");                
             checkBtn = false;    
+            document.querySelector('#savetoast').show();
         }
     }
     }
