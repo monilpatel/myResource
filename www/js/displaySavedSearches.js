@@ -14,9 +14,12 @@
     });
      
    $('#clear_drugs').on('click', function(){
-       
+    document.querySelector('#dialog').toggle()
+    var accept = document.getElementById("accept");
+    $('#deleteMsg').text("Clear all drugs?");
+       accept.onclick = function(){
         clearAllDrugs();  
-       
+       }
      });   
      
      

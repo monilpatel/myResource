@@ -183,12 +183,12 @@ function enableBtn(){
         
     //Function to clear all save drugs
     function clearAllDrugs(){
-        if(confirm('Are you sure you want to delete all drugs?')){
+     
             
          localStorage.clear('drugs');
            //localStorage.clear();
             location.reload();             
-        }
+        
     }
 
 
