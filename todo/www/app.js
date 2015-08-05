@@ -54,8 +54,10 @@ function runApp() {
 // CRUD
 
 function getRecords() {
-
-    window.df.apis.db.getRecords({"table_name":"list"}, function (response) {
+$.getJSON("http://dsp-ebony-m-cross-51446.cloud.dreamfactory.com/rest/db/todos", function(data) {
+ console.log(data);   
+}
+    window.df.apis.db.getRecords({"table_name":"todos"}, function (response) {
         buildItemList(response);
     }, crudError
     );
@@ -68,7 +70,7 @@ function createRecord() {
     var item = {"record":[
         {"name":name, "complete":false}
     ]};
-    df.apis.db.createRecords({"table_name":"list", "body":item}, function (response) {
+    df.apis.db.createRecords({"table_name":"todos", "body":item}, function (response) {
         $('#itemname').val('');
         getRecords();
     }, crudError
@@ -80,7 +82,7 @@ function updateRecord(id, complete) {
     var item = {"record":[
         {"id":id, "complete":complete}
     ]};
-    df.apis.db.updateRecords({"table_name":"list", "body":item}, function (response) {
+    df.apis.db.updateRecords({"table_name":"todos", "body":item}, function (response) {
         getRecords();
     }, crudError
     );
@@ -88,7 +90,7 @@ function updateRecord(id, complete) {
 
 function deleteRecord(id) {
 
-    df.apis.db.deleteRecords({"table_name":"list", "ids":id}, function (response) {
+    df.apis.db.deleteRecords({"table_name":"todos", "ids":id}, function (response) {
         getRecords();
     }, crudError
     );
@@ -172,12 +174,12 @@ function logIn() {
         $("#loginErrorMessage").addClass('alert-error').html('You must enter your email address and password to continue.');
         return;
     }
-    var body = {
+    var Owner = {
         "email":email,
         "password":pw
     };
     $("#loading").show();
-    window.df.apis.user.login({"body":body}, function (response) {
+    window.df.apis.user.login({"table_name":"list","body":Owner}, function (response) {
         // assign session token to be used for the session duration
         var session = new ApiKeyAuthorization("X-Dreamfactory-Session-Token",
             response.session_id, 'header');

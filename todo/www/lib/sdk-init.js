@@ -11,7 +11,7 @@ window.onload = function () {
     //var dsp_url = "https://_your_dsp_hostname_here_/rest/api_docs";
 
     //replace this app_name with yours
-    var app_name = "todojquery";
+    var app_name = "todo";
 
     //These are are necessary to communicate with the DreamFactory API
     window.authorizations.add("X-DreamFactory-Application-Name", new ApiKeyAuthorization("X-DreamFactory-Application-Name", app_name, "header"));

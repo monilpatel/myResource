@@ -1,7 +1,7 @@
 $(document).ready(function() {
     console.log(checkBtn);
     /* We hide the information menu from the user before any search is done */
-    $(".heading").hide();
+    //$(".heading").hide();
     /* Function to fix casing on strings */
     var fixCasing = function(str) {
         str = str.toLowerCase();
@@ -90,7 +90,7 @@ $(document).ready(function() {
             
             $("#active_ingred").text(activeIngredient);
             
-            $(".heading").show();
+            //$(".heading").show();
             if (!document.querySelector('#collapse1').opened) {
                  document.querySelector('#collapse1').toggle();
              }
@@ -146,6 +146,7 @@ $(document).ready(function() {
        searchFDA();
         checkBtn = true;
         enableBtn();
+        $(".core_headers").show();
     });
     
     $(document).keypress(function(event) {
@@ -153,6 +154,7 @@ $(document).ready(function() {
             searchFDA();
             checkBtn = true;
             enableBtn();
+            $(".core_headers").show();
         }
     });
 });

@@ -33,8 +33,13 @@ function enableBtn(){
                /* '<td><a href="#" id="remove_drug" data-id="'+ value.id +'">Clear</a> | <a href="infoPage.html?id="'+ value.id +'" id="more_info" data-id="'+ value.id +'">View Info</a></td>' +
                 '</tr>');*/
                                         
+<<<<<<< Updated upstream
                 '<td><a href="#" id="remove_drug" data-id="'+ value.id +'"><core-icon id="delete" icon="delete"></core-icon></a>  <a href="infoPage.html?id="'+ value.id +'" id="more_info" data-id="'+ value.id +'"> <core-icon id="moreInfo" icon="info"></core-icon></a></td>' +
                 '</tr>');
+=======
+
+                '<td><a href="#" id="remove_drug" data-id="'+ value.id +'"><core-icon id="delete" onclick="return dialog()" icon="delete"></core-icon></a> <a href="infoPage.html?id="'+ value.id +'" id="more_info" data-id="'+ value.id +'"><core-icon id="moreInfo" icon="info"></core-icon></a></td>' +'</tr>');
+>>>>>>> Stashed changes
                 
               //  alert(value.brand);
                 
@@ -178,6 +183,8 @@ function enableBtn(){
             location.reload();             
         }
     }
+
+
 
 
 
