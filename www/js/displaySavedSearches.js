@@ -18,7 +18,7 @@
  
     $('#saveBtn').click(function(e){
         addDrug(e);
-        document.querySelector('#savetoast').show();
+        
     });
      
     
