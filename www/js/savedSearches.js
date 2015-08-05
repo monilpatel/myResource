@@ -1,5 +1,7 @@
 var checkBtn = false;
 
+
+
 function enableBtn(){
     if(checkBtn == true){   
         document.getElementById("saveBtn").disabled = false;
@@ -150,7 +152,13 @@ function enableBtn(){
 
     //Function to remove drug
     function removeDrug(id){
-      if(confirm('Are you sure you want to delete this saved drug?')){
+      /* $('#remove_drug').click(function(){
+        document.querySelector('#dialog').toggle()
+    });*/
+       
+        
+        
+        
          var drugList = JSON.parse(localStorage.getItem('drugs')); 
         
         //loop to make sure we have the correct drug name to delete
@@ -168,7 +176,7 @@ function enableBtn(){
         
         }
 
-    }
+    
                 
      
         
@@ -176,6 +184,7 @@ function enableBtn(){
     //Function to clear all save drugs
     function clearAllDrugs(){
         if(confirm('Are you sure you want to delete all drugs?')){
+            
          localStorage.clear('drugs');
            //localStorage.clear();
             location.reload();             
