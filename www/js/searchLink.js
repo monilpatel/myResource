@@ -31,7 +31,9 @@ $(document).ready(function() {
         /* Grabbing data from the JSON on the SPL of the drug */
 		$.getJSON("https://api.fda.gov/drug/label.json?search=brand_name:"+toAdd, function(data) {
             var brand, generic, purpose, activeIngredient, warnings = "", instructs = "";
-            
+            /* Enabling the button on a successful query */
+            checkBtn = true;
+            enableBtn();
             /* Checking if the information is in the JSON and then displaying it */
             /* Displaying the instructions for the user */
             (data.results[0].description) ? 
@@ -145,17 +147,11 @@ $(document).ready(function() {
     /* The two ways for the user to prompt a search : clicking the search button or hitting enter */
     $("#searchBtn").click(function() {
        searchFDA();
-        checkBtn = true;
-        enableBtn();
-      
     });
     
     $(document).keypress(function(event) {
         if (event.which === 13){
             searchFDA();
-            checkBtn = true;
-            enableBtn();
-          
         }
     });
 });
