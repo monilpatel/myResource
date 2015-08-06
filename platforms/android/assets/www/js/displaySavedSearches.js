@@ -1,6 +1,6 @@
  $(document).ready(function() {
-     
-     $('#barcodescanner').click(function(){
+    
+      $('#barcodescanner').click(function(){
        window.alert("ButtonClicked");
        cordova.plugins.barcodeScanner.scan(
        function (result) {
@@ -15,7 +15,7 @@
    );
          
     });
- 
+   
     $('#saveBtn').click(function(e){
         addDrug(e);
         
@@ -29,8 +29,15 @@
     });
      
    $('#clear_drugs').on('click', function(){
+    document.querySelector('#dialog').toggle()
+    var accept = document.getElementById("accept");
+    $('#deleteMsg').text("Clear all drugs?");
+       accept.onclick = function(){
         clearAllDrugs();  
+       }
      });   
+     
+     
  
     
 //remove drug event from list
@@ -39,7 +46,14 @@ $('#drug_table').on('click','#remove_drug', function(e){
     console.log("drug from list");
     //alert(key);
     //id equal to attribute in clear link
+    document.querySelector('#dialog').toggle()
+    var accept = document.getElementById("accept");
+    $('#deleteMsg').text("Delete " + key +"?");
+    accept.onclick = function(){
+    
     removeDrug(key);
+        
+    }
     console.log("removing drug from list"); 
 });
         
@@ -55,7 +69,7 @@ $('#drug_table').on('click','#remove_drug', function(e){
             localStorage.delete(drug);
             alert("erasing stored drug");
         }*/       
-        
+         
     moreInfo(key);
     console.log("retrieving more information"); 
     });

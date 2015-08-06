@@ -119,6 +119,14 @@
                 float:right;
                 color:white;
             }
+            
+             #barcodescanner{
+    
+                 padding-top:3px;
+                 float: right;
+                 color:white;
+                 margin-right: .5em;
+            }
             #tap {float: bottom; } 
             
             h2.My List {
@@ -167,12 +175,17 @@
             #delete{
                 color:#009688;
                 float:right;
+                height: 2em;
+                width: 2em;
                 
             }
             
             #moreInfo{
                 color:#009688;
                 float:right;
+                height: 2em;
+                width: 2em;
+                margin-right: .5em;
             }
             
             #tableHeader{
@@ -182,16 +195,6 @@
             
             #table_text{
                 float: right;
-            }
-            #moreInfo {
-                height: 2em;
-                width: 2em;
-                margin-right: .5em;
-            }
-            
-            #delete {
-                height: 2em;
-                width: 2em;
             }
             
              #footer {
@@ -241,18 +244,20 @@
     color: green;
 }
 
-html /deep/ paper-dialog::shadow #scroller {
-    height: 300px;
-    width: 300px;
-    
-}
-            
+            html /deep/ paper-dialog::shadow #scroller {
+                height: 300px;
+                width: 300px;
+
+            }
+
             #decline{
                 color:#009688;
             }
              #accept{
                 color:#009688;
             }
+            
+           
             </style>
     </head>
         <body>
@@ -261,9 +266,11 @@ html /deep/ paper-dialog::shadow #scroller {
                 <div class="core-header">
                     <div id="div" flex>
                         <img src="img/InformedAmber2.svg">
+
                             <a href= "searchPage.html" id="searchBtn">
                                 <paper-icon-button id="searchBtn" icon="search"></paper-icon-button>
-                        </a> 
+                        </a>
+                        <div id="barcodescanner"><span class="glyphicon glyphicon-barcode"></span></div>
                     </div>
                 </div>
                 
@@ -277,16 +284,8 @@ html /deep/ paper-dialog::shadow #scroller {
                     </table>
 
                 </div>         
-               
-<!--
-                <button type="button" class="btn btn-default btn-sm" id="barcodescanner">
-                <span class="glyphicon glyphicon-barcode" ></span> Barcode </button>                        
--->
-                <!--<button id="barcodescanner">Click Me</button> -->
+<!--                <button id="barcodescanner">Click Me</button> -->
                 
-                <div id="barcodescanner">Barcode icon as a link:
-        <a href="#"><span class="glyphicon glyphicon-barcode"></span></a>
-      </div>
             </core-header-panel>                                                                                             
                <paper-action-dialog id="dialog" backdrop autoCloseDisabled layered="false">
                 <p id="deleteMsg">Some content</p>

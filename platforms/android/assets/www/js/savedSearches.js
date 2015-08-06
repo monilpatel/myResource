@@ -1,5 +1,7 @@
 var checkBtn = false;
 
+
+
 function enableBtn(){
     if(checkBtn == true){   
         document.getElementById("saveBtn").disabled = false;
@@ -33,8 +35,11 @@ function enableBtn(){
                /* '<td><a href="#" id="remove_drug" data-id="'+ value.id +'">Clear</a> | <a href="infoPage.html?id="'+ value.id +'" id="more_info" data-id="'+ value.id +'">View Info</a></td>' +
                 '</tr>');*/
                                         
+
                 '<td><a href="#" id="remove_drug" data-id="'+ value.id +'"><core-icon id="delete" icon="delete"></core-icon></a>  <a href="infoPage.html?id="'+ value.id +'" id="more_info" data-id="'+ value.id +'"> <core-icon id="moreInfo" icon="info"></core-icon></a></td>' +
                 '</tr>');
+
+
                 
               //  alert(value.brand);
                 
@@ -147,7 +152,13 @@ function enableBtn(){
 
     //Function to remove drug
     function removeDrug(id){
-      if(confirm('Are you sure you want to delete this saved drug?')){
+      /* $('#remove_drug').click(function(){
+        document.querySelector('#dialog').toggle()
+    });*/
+       
+        
+        
+        
          var drugList = JSON.parse(localStorage.getItem('drugs')); 
         
         //loop to make sure we have the correct drug name to delete
@@ -165,19 +176,22 @@ function enableBtn(){
         
         }
 
-    }
+    
                 
      
         
         
     //Function to clear all save drugs
     function clearAllDrugs(){
-        if(confirm('Are you sure you want to delete all drugs?')){
+     
+            
          localStorage.clear('drugs');
            //localStorage.clear();
             location.reload();             
-        }
+        
     }
+
+
 
 
 

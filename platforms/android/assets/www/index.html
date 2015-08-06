@@ -4,19 +4,27 @@
         <title>myResource</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
         <meta name="mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-capable" content="yes">        
+        <meta name="apple-mobile-web-app-capable" content="yes"> 
+        <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+        <script src="components/bower_components/webcomponentsjs/webcomponents.js"></script>
+        
         <link rel="import" href="components/bower_components/core-header-panel/core-header-panel.html">
         <link rel="import" href="components/bower_components/paper-icon-button/paper-icon-button.html">
         <link rel="import" href="components/bower_components/paper-button/paper-button.html">
         <link rel="import" href="components/bower_components/paper-fab/paper-fab.html"> 
+        <link rel="import" href="components/bower_components/paper-dialog/paper-dialog.html">
+        <link rel="import" href="components/bower_components/paper-elements/paper-elements.html">
         <link href='http://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
         <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/bootstrap.min.css">   
-        <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
         
-        <script src="components/bower_components/webcomponentsjs/webcomponents.js"></script>
-        <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        
+        
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+       
         <script src="js/bootstrap.min.js"></script>
         <script type=text/javascript src="js/displaySavedSearches.js"></script>
         <script src ="components/bower_components/platform/platform.js"></script> 
@@ -111,6 +119,14 @@
                 float:right;
                 color:white;
             }
+            
+             #barcodescanner{
+    
+                 padding-top:3px;
+                 float: right;
+                 color:white;
+                 margin-right: .5em;
+            }
             #tap {float: bottom; } 
             
             h2.My List {
@@ -159,12 +175,17 @@
             #delete{
                 color:#009688;
                 float:right;
+                height: 2em;
+                width: 2em;
                 
             }
             
             #moreInfo{
                 color:#009688;
                 float:right;
+                height: 2em;
+                width: 2em;
+                margin-right: .5em;
             }
             
             #tableHeader{
@@ -174,16 +195,6 @@
             
             #table_text{
                 float: right;
-            }
-            #moreInfo {
-                height: 2em;
-                width: 2em;
-                margin-right: .5em;
-            }
-            
-            #delete {
-                height: 2em;
-                width: 2em;
             }
             
              #footer {
@@ -228,20 +239,42 @@
                 
               }
                 }
+            
+            html /deep/ paper-dialog {
+    color: green;
+}
+
+            html /deep/ paper-dialog::shadow #scroller {
+                height: 300px;
+                width: 300px;
+
+            }
+
+            #decline{
+                color:#009688;
+            }
+             #accept{
+                color:#009688;
+            }
+            
+           
             </style>
     </head>
         <body>
-            <div id="loading" class="hide"><i class="icon-spinner icon-spin icon-4x"></i></div>
-    
+           
             <core-header-panel mode="standard" id="core_header_panel">
                 <div class="core-header">
                     <div id="div" flex>
                         <img src="img/InformedAmber2.svg">
+
                             <a href= "searchPage.html" id="searchBtn">
                                 <paper-icon-button id="searchBtn" icon="search"></paper-icon-button>
-                        </a> 
+                        </a>
+                        <div id="barcodescanner"><span class="glyphicon glyphicon-barcode"></span></div>
                     </div>
-                </div>                  
+                </div>
+                
+                
                 <div id="drug_t">   
                     <table class="table table-striped table-hover table-responsive" id="drug_table">
                         <tr id= "tableHeader">
@@ -249,14 +282,17 @@
                             <th id="table_text">Action</th>    
                         </tr>      
                     </table>
+
                 </div>         
-               
-<!--
-                <button type="button" class="btn btn-default btn-sm" id="barcodescanner">
-                <span class="glyphicon glyphicon-barcode" ></span> Barcode </button>                        
--->
-                <button id="barcodescanner">Click Me</button>
-            </core-header-panel>            
+<!--                <button id="barcodescanner">Click Me</button> -->
+                
+            </core-header-panel>                                                                                             
+               <paper-action-dialog id="dialog" backdrop autoCloseDisabled layered="false">
+                <p id="deleteMsg">Some content</p>
+                   <paper-button id="decline" affirmative>Decline</paper-button>
+      <paper-button id="accept" affirmative autofocus>Accept</paper-button>
+                </paper-action-dialog>
+
         </body>
 
         <div id="footer" horizontal layout center>
