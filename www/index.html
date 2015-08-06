@@ -17,12 +17,13 @@
         <link href='http://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
         <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/bootstrap.min.css">   
-        <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
         
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        
+        
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
        
         <script src="js/bootstrap.min.js"></script>
         <script type=text/javascript src="js/displaySavedSearches.js"></script>
@@ -236,15 +237,13 @@
               }
                 }
             
-            /*html /deep/ paper-action-dialog {
-                width: 20%;
-                height: 20%;
-                }*/
+            html /deep/ paper-dialog {
+    color: green;
+}
 
-/*html /deep/ paper-dialog::shadow #scroller {
+html /deep/ paper-dialog::shadow #scroller {
     height: 300px;
     width: 300px;
-<<<<<<< Updated upstream
     
 }
             
@@ -254,9 +253,6 @@
              #accept{
                 color:#009688;
             }
-=======
-}*/
->>>>>>> Stashed changes
             </style>
     </head>
         <body>
@@ -279,7 +275,6 @@
                             <th id="table_text">Action</th>    
                         </tr>      
                     </table>
-<<<<<<< Updated upstream
 
                 </div>         
                
@@ -287,32 +282,19 @@
                 <button type="button" class="btn btn-default btn-sm" id="barcodescanner">
                 <span class="glyphicon glyphicon-barcode" ></span> Barcode </button>                        
 -->
-                <button id="barcodescanner">Click Me</button>
-            </core-header-panel>                                                                                             
-=======
-                </div> 
+                <!--<button id="barcodescanner">Click Me</button> -->
                 
-       </section>
-            
-                <div>Barcode icon with a button link:
-            <a href="#" class="barcode"><span class="glyphicon glyphicon-barcode"></span></a></div> 
-            </core-header-panel> 
-    
-    
-    
-                                                                                                                            
->>>>>>> Stashed changes
+                <div id="barcodescanner">Barcode icon as a link:
+        <a href="#"><span class="glyphicon glyphicon-barcode"></span></a>
+      </div>
+            </core-header-panel>                                                                                             
                <paper-action-dialog id="dialog" backdrop autoCloseDisabled layered="false">
                 <p id="deleteMsg">Some content</p>
                    <paper-button id="decline" affirmative>Decline</paper-button>
       <paper-button id="accept" affirmative autofocus>Accept</paper-button>
                 </paper-action-dialog>
-    
-    
 
         </body>
-
-        
 
         <div id="footer" horizontal layout center>
             <a href="#" id="clear_drugs" class="footBtn" flex ><paper-button >Clear All Drugs</paper-button></a>
