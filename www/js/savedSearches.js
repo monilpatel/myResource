@@ -93,6 +93,8 @@ function enableBtn(){
             
         var instructs = document.getElementById("instructions").innerHTML;
         //Simple Validation
+            
+            
         if(id == ''){
             
             e.preventDefault();
@@ -112,8 +114,8 @@ function enableBtn(){
             
             //loop to make sure we have the correct drug name to delete
         for(var i=0; i < drugList.length; i++){
-            if(drugList[i].id == id){
-               //document.querySelector('#dialog2').toggle();
+            if(drugList[i].brand == brandNm){
+    
                 
                  document.querySelector('#error_savetoast').show();
                 e.preventDefault();
