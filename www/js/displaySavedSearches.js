@@ -4,10 +4,20 @@
        window.alert("ButtonClicked");
        cordova.plugins.barcodeScanner.scan(
        function (result) {
-          alert("We got a barcode\n" +
+           /*$("#barMsg").text("We got a barcode\n" +
                 "Result: " + result.text + "\n" +
-                "Format: " + result.format + "\n" +
-                "Cancelled: " + result.cancelled);
+                "Format: " + result.format + "\n");
+           document.querySelector('#bardialog').toggle(); */
+           $.getJSON("https://api.fda.gov/drug/label.json?search=upc:"+result.text, function(){
+               $("#barMsg").text("We got a barcode\n" +
+                "Result: " + result.text + "\n" +
+                "Format: " + result.format + "\n");
+                document.querySelector('#bardialog').toggle();
+           },
+               .fail(function(){
+               alert("Hey it failed");
+               });
+           });
       }, 
       function (error) {
           alert("Scanning failed: " + error);

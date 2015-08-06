@@ -9,6 +9,9 @@ function enableBtn(){
     }
 }
 
+$("#saveBtn").click(function(){
+    document.getElementById("saveBtn").disabled = true;
+});
 /*function savedSearches(){
         addDrug();  
  }*/
