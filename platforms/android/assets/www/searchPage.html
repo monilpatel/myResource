@@ -14,7 +14,7 @@
         <link rel="import" href="components/bower_components/core-collapse/core-collapse.html">
         <link rel="import" href="components/bower_components/paper-toast/paper-toast.html">
         <link rel="import" href="components/bower_components/paper-fab/paper-fab.html"> 
-    
+         
         <script type="text/javascript" src="js/bootstrap.js"></script>
         <script type="text/javascript" src="js/searchLink.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
@@ -26,17 +26,12 @@
        
         <script>
        function hide_collapse(){
-            //document.getElementById("hidden").style.visibility = "hidden";
+           
             $(".heading").hide();
             }
         
         </script>
         
-        
-        
- 
-
-
     <style>    
         
             html, body{
@@ -246,6 +241,11 @@
            
 
         </core-header-panel>
+        
+          <paper-action-dialog id="#dialog2" backdrop autoCloseDisabled layered="false">
+                <p id="saveMsg">Drug previously saved</p>
+                  <paper-button affirmative autofocus>Tap me to close</paper-button>
+                </paper-action-dialog>
        
 
         <div>
@@ -255,6 +255,7 @@
         
         <paper-toast id="errortoast" text="Error: Drug Not Found."></paper-toast>
         <paper-toast id="savetoast" text="Drug Saved!"></paper-toast>
+        <paper-toast id="error_savetoast" text="Drug previously saved."></paper-toast>
 
     </body>
 </html>

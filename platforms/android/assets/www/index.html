@@ -240,15 +240,18 @@
               }
                 }
             
+
             html /deep/ paper-dialog {
-    color: green;
-}
+            color: green;
+                
+            }
 
             html /deep/ paper-dialog::shadow #scroller {
                 height: 300px;
                 width: 300px;
 
             }
+
 
             #decline{
                 color:#009688;
@@ -288,11 +291,20 @@
                 
             </core-header-panel>                                                                                             
                <paper-action-dialog id="dialog" backdrop autoCloseDisabled layered="false">
-                <p id="deleteMsg">Some content</p>
+                <p id="deleteMsg"></p>
                    <paper-button id="decline" affirmative>Decline</paper-button>
       <paper-button id="accept" affirmative autofocus>Accept</paper-button>
                 </paper-action-dialog>
-
+            
+                <paper-action-dialog id="bardialog" backdrop autoCloseDisabled layered="false">
+                    <p id ="barMsg">Barcode Scan Worked! Cointinue to search?</p>
+                    <paper-button id="decline" affirmative> Decline</paper-button>
+                    <a id="barlink" href="searchPage.html"><paper-button id="accept" affirmative> Accept</paper-button></a>
+                </paper-action-dialog>
+                
+            <paper-dialog id="bardialogfail" backdrop autoCloseDisabled layered="false">
+                <p id ="failMsg">Barcode Scan Worked! Cointinue to search?</p>
+                </paper-dialog>
         </body>
 
         <div id="footer" horizontal layout center>

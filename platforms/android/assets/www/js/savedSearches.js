@@ -1,3 +1,4 @@
+
 var checkBtn = false;
 
 
@@ -8,6 +9,9 @@ function enableBtn(){
     }
 }
 
+$("#saveBtn").click(function(){
+    document.getElementById("saveBtn").disabled = true;
+});
 /*function savedSearches(){
         addDrug();  
  }*/
@@ -92,8 +96,10 @@ function enableBtn(){
             
         var instructs = document.getElementById("instructions").innerHTML;
         //Simple Validation
+            
+            
         if(id == ''){
-            alert('drug name is required');
+            
             e.preventDefault();
         } else{
             
@@ -111,8 +117,10 @@ function enableBtn(){
             
             //loop to make sure we have the correct drug name to delete
         for(var i=0; i < drugList.length; i++){
-            if(drugList[i].id == id){
-               alert(id+" is already saved in your list.");
+            if(drugList[i].brand == brandNm){
+    
+                
+                 document.querySelector('#error_savetoast').show();
                 e.preventDefault();
                 return;
             }
@@ -152,13 +160,7 @@ function enableBtn(){
 
     //Function to remove drug
     function removeDrug(id){
-      /* $('#remove_drug').click(function(){
-        document.querySelector('#dialog').toggle()
-    });*/
-       
-        
-        
-        
+    
          var drugList = JSON.parse(localStorage.getItem('drugs')); 
         
         //loop to make sure we have the correct drug name to delete
@@ -177,14 +179,10 @@ function enableBtn(){
         }
 
     
-                
-     
-        
+  
         
     //Function to clear all save drugs
-    function clearAllDrugs(){
-     
-            
+    function clearAllDrugs(){ 
          localStorage.clear('drugs');
            //localStorage.clear();
             location.reload();             

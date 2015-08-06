@@ -1,13 +1,48 @@
  $(document).ready(function() {
     
-      $('#barcodescanner').click(function(){
+//      $('#barcodescanner').click(function(){
+//       window.alert("ButtonClicked");
+//       cordova.plugins.barcodeScanner.scan(
+//       function (result) {
+//           $.getJSON("https://api.fda.gov/drug/label.json?search=upc:"+result.text, function(){
+//              /* $("#barMsg").text("We got a barcode\n" +
+//                "Result: " + result.text + "\n" +
+//                "Format: " + result.format + "\n");
+//                document.querySelector('#bardialog').toggle();*/
+//           },
+//               .fail(function(){
+//               alert("Hey it failed");
+//               });
+//           )
+//      }, 
+//      function (error) {
+//          alert("Scanning failed: " + error);
+//      })
+//    });
+//        
+     
+     $('#barcodescanner').click(function(){
+        
        window.alert("ButtonClicked");
        cordova.plugins.barcodeScanner.scan(
        function (result) {
-          alert("We got a barcode\n" +
+           $.getJSON("https://api.fda.gov/drug/label.json?search=upc:"+result.text,function(data){
+                $("#barMsg").text("We got a barcode\n" +
                 "Result: " + result.text + "\n" +
                 "Format: " + result.format + "\n" +
                 "Cancelled: " + result.cancelled);
+           document.querySelector("#bardialog").toggle();
+               $("barlink").attr("href","infopage.html?id="+data.results[0].openfda.brand_name);
+           })
+           .fail(function(){
+               
+              document.querySelector("#bardialogfail").toggle();
+
+           });
+           
+          
+           
+          
       }, 
       function (error) {
           alert("Scanning failed: " + error);
@@ -29,7 +64,7 @@
     });
      
    $('#clear_drugs').on('click', function(){
-    document.querySelector('#dialog').toggle()
+    document.querySelector('#dialog').toggle();
     var accept = document.getElementById("accept");
     $('#deleteMsg').text("Clear all drugs?");
        accept.onclick = function(){
