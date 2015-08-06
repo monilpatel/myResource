@@ -293,7 +293,11 @@ html /deep/ paper-dialog::shadow #scroller {
                    <paper-button id="decline" affirmative>Decline</paper-button>
       <paper-button id="accept" affirmative autofocus>Accept</paper-button>
                 </paper-action-dialog>
-
+                <paper-action-dialog id="bardialog" backdrop autoCloseDisabled layered="false">
+                    <p>Barcode Scan Worked! Cointinue to search?</p>
+                    <paper-button id="decline" affirmative> Decline</paper-button>
+                    <paper-button id="accept" affirmative> Accept</paper-button>
+                </paper-action-dialog>
         </body>
 
         <div id="footer" horizontal layout center>
