@@ -2,13 +2,13 @@
 var checkBtn = false;
 
 
-
+// Function to enable save button
 function enableBtn(){
     if(checkBtn == true){   
         document.getElementById("saveBtn").disabled = false;
     }
 }
-
+// Click handler for save button
 $("#saveBtn").click(function(){
     document.getElementById("saveBtn").disabled = true;
 });
