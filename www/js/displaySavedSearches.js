@@ -1,5 +1,6 @@
  $(document).ready(function() {
-    
+    // Barcode scanner code commented out 
+     
 //      $('#barcodescanner').click(function(){
 //       window.alert("ButtonClicked");
 //       cordova.plugins.barcodeScanner.scan(
@@ -20,7 +21,7 @@
 //      })
 //    });
 //        
-     
+     // This is for activating the barcode scanning and then showing the user the data (it maybe rough as it was rushed)
      $('#barcodescanner').click(function(){
         
        window.alert("ButtonClicked");
@@ -44,25 +45,23 @@
            
           
       }, 
-      function (error) {
-          alert("Scanning failed: " + error);
-      }
+        
    );
          
     });
-   
+   // Click handler for the save drug button
     $('#saveBtn').click(function(e){
         addDrug(e);
         
     });
      
-    
+    // Enabling the save button after the user hits enter
     $(document).keypress(function(e) {
         if (e.which === 13) {
             enableBtn();
         }
     });
-     
+    // Click handler for the clear drugs button
    $('#clear_drugs').on('click', function(){
     document.querySelector('#dialog').toggle();
     var accept = document.getElementById("accept");

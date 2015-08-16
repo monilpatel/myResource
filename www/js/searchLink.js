@@ -14,7 +14,7 @@ $(document).ready(function() {
         }
         return str;
     }
-    
+    // function to check if an element is an array 
     var inArray = function(str, arr) {
         for (var i = 0; i < arr.length; i++) {
             if(arr[i] == str) {
